@@ -1,0 +1,62 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 240px;
+}
+
+.img-frame{
+  width: 20%;
+  border-radius: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin-right: 10%;
+}
+
+img{
+  width: 100%;
+}
+
+.usuario{
+  color: #fff;
+}
+
+.icono{
+  color: #8f8f8f;
+  margin-right: 0.6rem;
+}
+.sidenav .mat-toolbar {
+  height: 9%;
+  background: #1899fc;
+  white-space: normal;
+}
+
+.mat-toolbar.mat-primary {
+
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.nav-bar{
+  height: 9%;
+  background: #1899fc;
+  /* height: auto; */
+  color: #fff;
+  /* position: fixed; */
+}
+
+.boton{
+  font-size: 2rem;
+}
+
+.titulo{
+  /* padding: 0.8rem 0; */
+  font-size: 2rem;
+  margin-left: 0.625rem;
+  font-weight: 400;
+
+}

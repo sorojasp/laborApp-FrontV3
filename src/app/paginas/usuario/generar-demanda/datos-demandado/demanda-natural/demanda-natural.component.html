@@ -1,0 +1,126 @@
+<form
+  [formGroup]="formularioNatural"
+  class="full-width"
+  (ngSubmit)="log()">
+
+
+
+  <div class="full-width nombre-inputs">
+    <mat-form-field class="half-width">
+      <input
+        matInput
+        placeholder="Nombre"
+        formControlName="nombre"
+        required>
+    </mat-form-field>
+
+    <mat-form-field class="half-width">
+      <input
+        matInput
+        placeholder="Apellido"
+        formControlName="apellido"
+        required>
+    </mat-form-field>
+  </div>
+
+
+  <div class="full-width" formGroupName="ubicacion">
+
+
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        placeholder="Dirección"
+        formControlName="direccion"
+        required>
+    </mat-form-field>
+
+    <div class="full-width nombre-inputs">
+
+      <mat-form-field class="half-width">
+        <mat-select
+          placeholder="Departamento"
+          formControlName="departamento">
+
+          <mat-option value="option">Option</mat-option>
+
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="half-width">
+        <mat-select
+          placeholder="Municipio"
+          formControlName="municipio">
+
+          <mat-option value="option">Option</mat-option>
+
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+
+  </div>
+
+
+  <div formGroupName="documento" class="full-width nombre-inputs">
+
+    <mat-form-field class="half-width">
+       <mat-select
+         #tipoDeDocumento
+         placeholder="Tipo de Documento"
+         formControlName="tipoDeDocumento" >
+
+         <mat-option #opcionCC value="CC">Cedula de Ciudadania</mat-option>
+         <mat-option value="CE">Cedula de Exptranjeria</mat-option>
+         <mat-option value="Pasaporte">Pasaporte</mat-option>
+         <mat-option value="Carnet Diplomatico">Carnet Diplomatico</mat-option>
+
+       </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="half-width">
+      <input
+        type="tel"
+        matInput
+        placeholder="{{ tipoDeDocumento.value || opcionCC.value }}"
+        formControlName="numeroDeDocumento"
+        required >
+    </mat-form-field>
+
+  </div>
+
+
+  <div class="full-width nombre-inputs mb-1">
+
+    <mat-form-field class="half-width">
+      <input
+        matInput
+        placeholder="Email"
+        formControlName="email"
+        required>
+      <mat-error *ngIf="formularioNatural.get('email').invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field class="half-width">
+      <input
+        type="tel"
+        matInput
+        placeholder="Telefono"
+        formControlName="telefono"
+        required>
+    </mat-form-field>
+
+  </div>
+
+
+  <button
+    mat-flat-button
+    type="submit"
+    class="btn"
+    [disabled]="!formularioNatural.valid">
+    Continuar
+  </button>
+
+
+</form>

@@ -1,0 +1,47 @@
+<div class="signup-container">
+
+
+  <form [formGroup]="apellidoNombre">
+
+    <h5 class="parrafo">Ingrese su nombre</h5>
+    <mat-card class="card">
+
+      <mat-form-field class="inputs full-width">
+        <input matInput
+          placeholder="Nombres: "
+          formControlName="nombre"
+          required >
+      </mat-form-field>
+
+
+      <mat-form-field class="inputs full-width">
+        <input matInput
+          placeholder="Apellidos: "
+          formControlName="apellido"
+          required >
+      </mat-form-field>
+
+      <mat-form-field class="inputs full-width">
+        <mat-label>Ciudad de residencia</mat-label>
+        <mat-select #mode
+          value="side"
+          formControlName="ciudadResiden"
+          required >
+            <mat-option value="Bogotá">Bogotá</mat-option>
+            <mat-option value="Calí">Calí</mat-option>
+            <mat-option value="Medellín">Medellín</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </mat-card>
+
+    <button mat-flat-button
+      class="btn"
+      (click)="clickBtnSiguiente()"
+      [disabled]="apellidoNombre.invalid">
+      Siguiente
+    </button>
+
+  </form>
+
+</div>

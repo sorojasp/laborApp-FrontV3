@@ -1,0 +1,37 @@
+.generar-pdf-container{
+	width: 100%;
+	height: auto;
+	margin: auto;
+
+	padding: 0 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.tooltip{
+	margin-left: 1rem;
+}
+
+.titulo{
+	color: #2196f3;
+	font-size: 2rem;
+	font-weight: normal;
+	line-height: 110%;
+	margin-top: 1rem;
+}
+
+.mat-h1{
+	font-size: 1.7rem;
+	text-align: center;
+}
+
+.mat-body{
+	font-size: 1.1rem;
+	text-align: justify;
+}
+
+.mt-1{
+	margin-top: 1rem
+}

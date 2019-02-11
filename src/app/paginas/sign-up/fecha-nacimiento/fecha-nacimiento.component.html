@@ -1,0 +1,30 @@
+<div class="signup-container">
+
+
+  <form [formGroup]="fechaNacimiento">
+
+    <h5 class="parrafo">Fecha de nacimiento</h5>
+    <mat-card class="card">
+
+      <mat-form-field class="inputs full-width">
+        <input
+          matInput
+          (click)="picker.open()"
+          [min]="minDate"
+          [max]="maxDate"
+          [matDatepicker]="picker"
+          placeholder="Elegir fecha de nacimiento"
+          formControlName="nacimiento"
+          required >
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+      </mat-form-field>
+
+    </mat-card>
+
+    <button mat-flat-button class="btn" (click)="fechaNaci_clickBtnSiguiente()" [disabled]="fechaNacimiento.invalid" >Siguiente</button>
+
+  </form>
+
+
+</div>

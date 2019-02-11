@@ -1,0 +1,55 @@
+.sign-in-container{
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.sign-in-container .img-container,
+.sign-in-container .img-container img{
+	width: 15rem;
+}
+.sign-in-container form{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.sign-in-container form .inputs{
+	width: 100%;
+	margin-bottom: 1rem;
+}
+.sign-in-container form .link{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	color: #1899fc;
+}
+.sign-in-container form .link a,
+.sign-in-container button{
+	font-size: 1rem;
+	line-height: 2.25rem;
+	padding: 0 1rem;
+}
+.sign-in-container form .link a{
+	padding: 0 0.09375rem;
+}
+
+.parrafo{
+ 	margin: 1rem 0;
+ 	font-size: 1.5rem;
+	text-align: center;
+ 	font-family: 'roboto';
+ 	font-weight: normal;
+}
+
+
+@media (min-width:470px) {
+	.card{
+		width: 423px;
+	}
+}

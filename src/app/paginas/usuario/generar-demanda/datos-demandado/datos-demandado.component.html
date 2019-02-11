@@ -1,0 +1,69 @@
+<div class="generar-pdf-container mt-1" *ngIf="informacion">
+
+  <mat-card class="card">
+
+    <h2 class="mat-h1">Antes de iniciar, es importante que conozcas esto</h2>
+
+    <h5 class="mat-title">Persona natural</h5>
+    <p class="mat-body">Si su relación laboral surgió, como producto de una labor desempeñada por usted, para un ser humano mas no para una empresa. La persona natural se identifica con el nombre y número de cedula de ciudadanía. </p>
+
+
+    <h5  class="mat-title">Persona jurídica</h5>
+    <p class="mat-body">Corresponde al más común y se logra categorizar si usted como empleado, realizo o realiza labores para una empresa, entendiéndose está, como una organización en cuyo objetivo se encuentre una actividad económica y lucrativa. La persona jurídica se identifica con la razón social y el número de identificación tributaria NIT. </p>
+  </mat-card>
+
+  <button
+    (click)="informacion = false"
+    mat-flat-button
+    class="btn">
+    Siguiente
+  </button>
+
+</div>
+<div *ngIf="!informacion" class="generar-pdf-container">
+
+  <h5 class="titulo">Iniciar Demanda</h5>
+
+  <mat-card class="card">
+
+    <!-- Tipo de demanda -->
+    <mat-form-field class="full-width">
+
+      <mat-select
+        #seleccion
+        placeholder="Tipo de Persona"
+        [(value)]="opcion">
+
+        <mat-option value="opcion1">Persona Juridica</mat-option>
+        <mat-option value="opcion2">Persona Natural</mat-option>
+
+      </mat-select>
+      <mat-icon
+        class="tooltip"
+        matSuffix
+        matTooltip="Elija la persona a demandar">
+        help
+      </mat-icon>
+    </mat-form-field>
+
+
+
+    <!-- Persona de tipo Juridica -->
+
+    <app-demanda-juridica
+      class="full-width"
+      *ngIf="seleccion.value == 'opcion1'">
+    </app-demanda-juridica>
+
+    <!-- persona de tipo Natural -->
+
+    <app-demanda-natural
+      class="full-width"
+      *ngIf="seleccion.value == 'opcion2'">
+    </app-demanda-natural>
+
+
+  </mat-card>
+
+
+</div>

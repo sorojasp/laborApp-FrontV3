@@ -1,0 +1,26 @@
+<mat-toolbar class="nav-bar">
+  <button mat-icon-button routerLink="/login">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</mat-toolbar>
+
+
+<app-nom-ape-gene
+  *ngIf="nombreApeVisual"
+  (Btn_nombreApeVisual)="MostrarNombreVisual($event)">
+</app-nom-ape-gene>
+
+<app-documento
+  *ngIf="documentoVisual"
+  (Btn_documentoIden)="mostrarDocumento($event)">
+</app-documento>
+
+<app-fecha-nacimiento
+  *ngIf="fechaNacivisuai"
+  (Btn_fechaNacimiento)= "mostrarcorreoContra($event)">
+</app-fecha-nacimiento>
+
+<app-correo-contra
+  *ngIf="correoContraseVisua"
+  (Btn_correoContrasena)="recibeCorreoContra($event)">
+</app-correo-contra>

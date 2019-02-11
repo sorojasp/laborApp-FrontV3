@@ -1,0 +1,60 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="'over'">
+    <mat-toolbar>
+      <div class="img-frame">
+        <img [src]="img_src" alt="imagen de perfil">
+      </div>
+      <div>
+        <h2 class="usuario">
+          {{ usuario_name }}
+        </h2>
+      </div>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a
+        mat-list-item
+        (click)="perfilUsuario(drawer.toggle())">
+      <mat-icon class="icono">person</mat-icon>
+      Perfil
+      </a>
+      <a
+        mat-list-item
+        (click)="generarDemanda(drawer.toggle())">
+      <mat-icon class="icono">chat</mat-icon>
+      Generar Demanda
+      </a>
+      <a
+        mat-list-item
+        (click)="contactarAbogado(drawer.toggle())">
+      <mat-icon class="icono">call</mat-icon>
+      Contactar Abogado
+      </a>
+      <a
+        mat-list-item
+        (click)="salir()">
+      <mat-icon class="icono">exit_to_app</mat-icon>
+      Cerrar Sesion
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="nav-bar">
+      <button
+
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon" class="boton">menu</mat-icon>
+      </button>
+
+      <span class="titulo">LaborApp</span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+
+    <ng-content></ng-content>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

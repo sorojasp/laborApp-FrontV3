@@ -1,0 +1,24 @@
+<div class="container">
+
+  <h5 class="titulo">¿Necesitas un abogado?</h5>
+
+  <mat-card class="card">
+
+    <mat-form-field class="full-width">
+      <textarea
+        #text
+        matInput
+        rows="5"
+        placeholder="Ingrese una breve descricpción de su caso:"></textarea>
+    </mat-form-field>
+
+  </mat-card>
+
+  <button
+    [disabled]="!text.value"
+    mat-flat-button
+    class="btn">
+    Enviar
+  </button>
+
+</div>

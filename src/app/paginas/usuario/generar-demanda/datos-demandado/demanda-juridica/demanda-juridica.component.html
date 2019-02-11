@@ -1,0 +1,114 @@
+<form [formGroup]="formularioJuridica" class="full-width" (ngSubmit)="correrPrueba()">
+
+    <div class="full-width nombre-inputs">
+      <mat-form-field class="half-width">
+        <input matInput
+          placeholder="Razón Social"
+          formControlName="razonSocial"
+          required>
+
+        <mat-icon
+          class="tooltip"
+          matSuffix
+          matTooltip="Nombre de la empresa">
+          help
+        </mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="half-width">
+        <input matInput
+          placeholder="NIT"
+          formControlName="nit"
+          required>
+
+        <mat-icon
+          class="tooltip"
+          matSuffix
+          matTooltip="Número de Identificacion Tributario">
+          help
+        </mat-icon>
+      </mat-form-field>
+    </div>
+
+
+    <div class="full-width" formGroupName="ubicacion">
+
+
+      <mat-form-field class="full-width">
+        <input  matInput placeholder="Dirección" formControlName="direccion" required>
+      </mat-form-field>
+
+      <div class="full-width nombre-inputs">
+
+
+        <mat-form-field class="half-width">
+          <mat-select placeholder="Departamento" formControlName="departamento" required>
+            <!-- <mat-option *ngFor="let d of listadoDepartamentos"  value="{{ d.departamento }}">{{ d.departamento }}</mat-option> -->
+            <mat-option value="opcion">Opcion</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="half-width">
+          <mat-select placeholder="Municipio" formControlName="municipio" required>
+            <!-- <mat-option *ngFor="let dYM of listDepartamentosYMunicipios"  value="{{ dYM.municipio }}">{{ dYM.municipio }}</mat-option> -->
+            <mat-option value="opcion">Opcion</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+      </div>
+
+    </div>
+
+
+    <div class="full-width nombre-inputs mb-1">
+
+
+      <mat-form-field class="half-width">
+        <input matInput placeholder="Email" formControlName="email" required>
+        <mat-error *ngIf="formularioJuridica.get('email').invalid">
+          {{getErrorMessage()}}
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="half-width">
+
+        <input type="tel" matInput placeholder="Telefono" formControlName="telefono" required>
+
+      </mat-form-field>
+
+
+    </div>
+
+    <div class="full-width mb-1">
+
+      <mat-checkbox #representante >
+        Sabe usted los datos del representante legal
+      </mat-checkbox>
+
+    </div>
+
+
+    <!-- Representante legal -->
+
+    <app-representante
+      *ngIf="representante.checked"
+      (representanteFormulario)="eventoHijoFormulario($event)"
+      class="full-width">
+    </app-representante>
+
+
+
+  <button mat-flat-button class="btn"
+    type="submit"
+    [disabled]="verificar(representante.checked)">
+    Continuar
+  </button>
+  <!-- <a mat-flat-button class="btn"
+
+    (click)="log(representante.checked)"
+    [disabled]="verificar(representante.checked)"
+
+  >Continuar</a> -->
+
+</form>

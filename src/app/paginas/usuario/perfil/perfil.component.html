@@ -1,0 +1,110 @@
+<div class="container">
+
+  <h5 class="titulo">Información</h5>
+  <mat-card class="card">
+    <button
+      mat-flat-button
+      type="submit"
+      class="subir-img btn">
+      Cambiar Imagen
+    </button>
+
+    <form>
+
+      <div class="full-width nombre-inputs">
+        <mat-form-field class="half-width">
+          <input
+            matInput
+            placeholder="Nombre"
+            required>
+        </mat-form-field>
+
+        <mat-form-field class="half-width">
+          <input
+            matInput
+            placeholder="Apellido"
+            required>
+        </mat-form-field>
+      </div>
+
+      <div class="full-width nombre-inputs">
+
+        <mat-form-field class="half-width">
+          <input
+            matInput
+            disabled
+            placeholder="Edad"
+            required>
+        </mat-form-field>
+
+        <mat-form-field class="half-width">
+          <input
+            type="tel"
+            matInput
+            placeholder="Telefono"
+            required>
+        </mat-form-field>
+
+      </div>
+
+
+      <div class="full-width nombre-inputs">
+
+        <mat-form-field class="half-width">
+          <input
+            matInput
+            placeholder="Dirección"
+            required>
+        </mat-form-field>
+
+        <mat-form-field class="half-width">
+          <input
+            matInput
+            disabled
+            placeholder="Email"
+            required>
+        </mat-form-field>
+
+
+      </div>
+
+      <div class="full-width nombre-inputs mb-1">
+
+        <mat-form-field class="half-width">
+           <mat-select
+             #tipoDeDocumento
+             placeholder="Tipo de Documento">
+
+             <mat-option #opcionCC value="CC">Cedula de Ciudadania</mat-option>
+             <mat-option value="CE">Cedula de Exptranjeria</mat-option>
+             <mat-option value="Pasaporte">Pasaporte</mat-option>
+             <mat-option value="Carnet Diplomatico">Carnet Diplomatico</mat-option>
+
+           </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="half-width">
+          <input
+            type="tel"
+            matInput
+            placeholder="{{ tipoDeDocumento.value || opcionCC.value }}"
+            required >
+        </mat-form-field>
+
+      </div>
+
+
+
+
+    </form>
+
+  </mat-card>
+
+  <button
+    mat-flat-button
+    type="submit"
+    routerLink="../home"
+    class="btn">
+    Guardar
+  </button>
+</div>

@@ -1,0 +1,59 @@
+<div class="sign-in-container">
+
+
+  <div class="img-container">
+    <img src="./assets/img/logo.png" alt="Logo Laborapp">
+  </div>
+
+
+  <form [formGroup]="formularioSignIn">
+
+    <h5 class="parrafo">Por favor, inicie sesión con su cuenta</h5>
+
+    <mat-card class="card">
+
+      <mat-form-field class="inputs">
+        <input matInput
+        placeholder="Email"
+        formControlName="email"
+        required>
+        <mat-error *ngIf="formularioSignIn.get('email').invalid">
+          {{getErrorMessage()}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="inputs">
+        <input matInput
+          placeholder="Contraseña"
+          [type]="hide ? 'password' : 'text'"
+          formControlName="password"
+          required>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-form-field>
+
+      <div class="link">
+        <a mat-button
+          routerLink=".">
+          Olvidé mi contraseña
+        </a>
+
+        <a mat-button
+          routerLink="/signup">
+          Crear cuenta
+        </a>
+      </div>
+
+    </mat-card>
+
+
+    <button mat-flat-button
+      routerLink="/usuario"
+      class="btn"
+      (click)="openSnackBar()">
+      Entrar
+    </button>
+
+  </form>
+
+
+</div>
