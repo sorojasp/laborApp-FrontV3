@@ -47,14 +47,11 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
     ServiceModule,
-    ServiceWorkerModule.register(/*'ngsw-worker.js'*/'sw.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
 
 
   ],
-
-  providers: [  ],
 
   bootstrap: [AppComponent]
 })

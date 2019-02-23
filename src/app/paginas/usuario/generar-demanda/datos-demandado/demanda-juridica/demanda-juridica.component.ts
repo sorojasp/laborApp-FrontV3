@@ -1,10 +1,10 @@
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
 import { saveAs } from 'file-saver';
 
 
-import { CedulaUsuarioService, DemandadoService, DemandaPdfService } from '../../../../../services/service.index';
+import {  DemandadoService, DemandaPdfService } from '../../../../../services/service.index';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-demanda-juridica',
@@ -17,19 +17,16 @@ export class DemandaJuridicaComponent implements OnInit, AfterContentChecked  {
 
   formularioRepresentante: FormGroup = this.formularioJuridica;
 
-
-
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
-    private activeRoute: ActivatedRoute,
-    public cedulaUsuarioService: CedulaUsuarioService,
     private demandadoService: DemandadoService,
-    private demandaPdfService: DemandaPdfService  ) {
+    private demandaPdfService: DemandaPdfService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {
 
     this.formularioJuridica = this.formBuilder.group({
       'razonSocial':  [null, Validators.required],
-      'nit':          [null,Validators.compose([Validators.required, Validators.pattern(/^[0-9]+$/)])],
+      'nit':          [null, Validators.compose([Validators.required, Validators.pattern(/^[0-9]+$/)])],
       'telefono':     [null, Validators.compose([Validators.required, Validators.pattern(/^[0-9]+$/)])],
       'email':        [null, Validators.compose([Validators.required, Validators.email])],
       'ubicacion':    this.formBuilder.group({
@@ -44,14 +41,14 @@ export class DemandaJuridicaComponent implements OnInit, AfterContentChecked  {
 
   ngOnInit() { }
 
-  ngAfterContentChecked(){ }
+  ngAfterContentChecked() { }
 
-  eventoHijoFormulario(e){
+  eventoHijoFormulario(e) {
     this.formularioRepresentante = e;
   }
 
 
-  guardarDemandado(){
+  guardarDemandado() {
 
     const objetoDemandadoJuridico = {
 
@@ -66,63 +63,64 @@ export class DemandaJuridicaComponent implements OnInit, AfterContentChecked  {
 
 
     this.demandadoService.guardarDemandadoJuridico( objetoDemandadoJuridico )
-      .subscribe( async res => {
-          console.log(res)
-          await this.generarPdf();
-      })
+      .subscribe(async res => {
+
+        await this.generarPdf();
+
+
+      });
 
   }
 
-  generarPdf(){
+  generarPdf() {
     const nit = this.formularioJuridica.value.nit;
-    const cedula = this.cedulaUsuarioService.obtenerCedual();
-    this.demandaPdfService.generarPdf(nit, cedula)
+    this.demandaPdfService.generarPdf(nit)
       .subscribe( async res => {
         console.log(res);
         await this.enviarPdf();
+        await this.descargarPdf();
       }, err => {
-        console.log(err)
-      })
+        console.log(err);
+      });
   }
 
-  enviarPdf(){
-    const cedula = this.cedulaUsuarioService.obtenerCedual();
-    this.demandaPdfService.enviarPdf(cedula)
+  enviarPdf() {
+    this.demandaPdfService.enviarPdf()
       .subscribe( res => {
-        console.log(res)
+        console.log(res);
       }, err => {
-        console.log(err)
-      })
+        console.log(err);
+      });
   }
 
-  descargarPdf(){
-    const cedula = this.cedulaUsuarioService.obtenerCedual();
-    this.demandaPdfService.descargarPdf(cedula)
+  descargarPdf() {
+    this.demandaPdfService.descargarPdf()
       .subscribe( doc => {
-        saveAs( doc, 'demanda.pdf' )
+        saveAs( doc, 'demanda.pdf' );
+        this.router.navigate(['../datos-contrato'], {relativeTo: this.activatedRoute});
       }, err => {
-        console.log(err)
-      })
+        console.log(err);
+      });
   }
 
 
 
-  public async correrPrueba(){
+  public async correrPrueba() {
 
     await this.guardarDemandado();
     // await this.generarPdf();
     // await this.enviarPdf();
-    //await this.descargarPdf();
+    // await this.descargarPdf();
 
   }
 
 
-  verificar( cheked ){
-    if( cheked && (!this.formularioJuridica.valid || !this.formularioRepresentante.valid)){
+  verificar( cheked ) {
+    if ( cheked && (!this.formularioJuridica.valid || !this.formularioRepresentante.valid)) {
       return true;
-    }else if( !this.formularioJuridica.valid ){
+    } else if ( !this.formularioJuridica.valid ) {
       return true;
-    }else{
+    } else {
       return false;
     }
   }
@@ -132,6 +130,6 @@ export class DemandaJuridicaComponent implements OnInit, AfterContentChecked  {
 
   getErrorMessage() {
     return this.formularioJuridica.get('email').hasError('required') ? 'Introduzca un email' :
-          this.formularioJuridica.get('email').hasError('email') ? 'Email no vaildo' : '';
+    this.formularioJuridica.get('email').hasError('email') ? 'Email no vaildo' : '';
  }
 }

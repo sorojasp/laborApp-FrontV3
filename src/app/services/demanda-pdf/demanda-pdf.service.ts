@@ -1,31 +1,39 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UsuariosService } from '../usuario/usuarios.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class DemandaPdfService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private usuarioService: UsuariosService) { }
 
   private URL = 'https://laborappi.herokuapp.com/api/laborapp/demanda';
 
-  generarPdf(nit, cedula) {
+  httpOptions = {
+    headers: new HttpHeaders({
+      'token': `${ this.usuarioService.token }`
+    })
+  }
 
-    return this.http.get(`${ this.URL }/generar/${ nit }/${ cedula }`);
+  generarPdf( nit ) {
+
+    return this.http.get(`${ this.URL }/generar/${ nit }/${ this.usuarioService.usuario.cedulaPersona }`, this.httpOptions);
 
   }
 
 
-  enviarPdf(cedula) {
+  enviarPdf() {
 
-    return this.http.get(`${ this.URL }/enviar/${ cedula }`);
+    return this.http.get(`${ this.URL }/enviar/${ this.usuarioService.usuario.cedulaPersona }`, this.httpOptions);
 
   }
 
-  descargarPdf(cedula){
+  descargarPdf(){
 
-    return this.http.get(`${ this.URL }/descargar/${ cedula }`, { responseType: 'blob' })
+    return this.http.get(`${ this.URL }/descargar/${ this.usuarioService.usuario.cedulaPersona }`, { headers: new HttpHeaders({'token': `${ this.usuarioService.token }`}), responseType: 'blob' })
 
   }
 

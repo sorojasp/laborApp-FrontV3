@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
+import { UsuariosService } from '../../services/service.index';
 
 @Component({
   selector: 'app-nav-bar',
@@ -20,8 +21,11 @@ export class NavBarComponent {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private router: Router,
-    private activeRoute: ActivatedRoute
-    ) {}
+    private activeRoute: ActivatedRoute,
+    private usuarioService: UsuariosService
+    ) {
+      this.usuario_name = usuarioService.usuario.nombresPersona;
+    }
 
   isHandset$: Observable<boolean> = this.breakpointObserver
   .observe(Breakpoints.Handset)
@@ -33,8 +37,9 @@ export class NavBarComponent {
 
 
   salir(){
-
+    this.usuarioService.logoutUsuario();
     this.router.navigate(['../../'])
+
 
   }
 

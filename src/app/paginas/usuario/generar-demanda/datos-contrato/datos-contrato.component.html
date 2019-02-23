@@ -1,3 +1,5 @@
+<form [formGroup]="formularioContrato" class="full-width" (ngSubmit)="subirDatosContrato()">
+
 <div class="container">
 
   <h5 class="titulo">Información del Contrato Laboral</h5>
@@ -9,7 +11,8 @@
       <mat-form-field class="half-width">
          <mat-select
            #tipoDeContrato
-           placeholder="Tipo de Contrato">
+           placeholder="Tipo de Contrato"
+           formControlName="tipoContrato">
 
            <mat-option #opcion value="TI">Termino Indefinido</mat-option>
            <mat-option value="PS">Prestación de Servicios</mat-option>
@@ -24,6 +27,7 @@
           type="tel"
           matInput
           placeholder="Ultimo salario devengado"
+          formControlName="ultimoSalario"
           required >
       </mat-form-field>
 
@@ -32,20 +36,35 @@
     <div class="full-width nombre-inputs ">
 
       <mat-form-field class="half-width">
-        <input matInput [matDatepicker]="picker1" placeholder="Choose a date" (click)="picker1.open()">
+        <input matInput [matDatepicker]="picker1" placeholder="Fecha Inicio de Contrato" 
+        (click)="picker1.open()" formControlName="fechaInicioContrato">
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker touchUi #picker1></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field class="half-width">
-        <input matInput [matDatepicker]="picker2" placeholder="Choose a date" (click)="picker2.open()">
+        <input matInput [matDatepicker]="picker2" placeholder="Fecha Final de Contrato" 
+        (click)="picker2.open()" formControlName="fechaFinalContrato">
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker touchUi #picker2></mat-datepicker>
       </mat-form-field>
+      
+    </div>
 
-
+    <div class="full-width" >
+      <mat-form-field class="full-width" >
+        <textarea matInput placeholder="Descripción breve de funciones" formControlName="descripcionFunciones"></textarea>
+      </mat-form-field>
     </div>
 
   </mat-card>
 
+  <button mat-flat-button class="btn btn-success"
+    type="submit"
+    [disabled]="!this.formularioContrato.valid">
+    Continuar
+  </button>
+
 </div>
+
+</form>

@@ -6,10 +6,9 @@ import {MatSnackBar} from '@angular/material';
 
 //Modelos
 import { Usuario } from '../../models/Usuario';
-
 //Servicios
-import { UsuariosService } from '../../services/usuario/usuarios.service';
-import { CedulaUsuarioService } from '../../services/cedula-usuario/cedula-usuario.service';
+import { UsuariosService} from '../../services/service.index';
+
 
 
 @Component({
@@ -29,11 +28,11 @@ export class SignUpComponent implements OnInit {
   datosForm4: any;
 
 
+
  constructor(
    private usuariosService: UsuariosService,
-   public cedulaUsuario: CedulaUsuarioService,
    public router: Router,
-  public snackBar: MatSnackBar) {}
+   public snackBar: MatSnackBar) {}
 
 
   ngOnInit() {}
@@ -86,7 +85,6 @@ export class SignUpComponent implements OnInit {
       codigoDaneMunicipio: 6768
     };
 
-    this.cedulaUsuario.guardarCedula(this.datosForm2.cedulaUsuario);
 
     this.usuariosService.guardarUsuarios(informacionUsuario)
     .subscribe(

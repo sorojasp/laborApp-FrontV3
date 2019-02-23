@@ -1,5 +1,7 @@
 <app-nav-bar>
 
-  <router-outlet></router-outlet>
-  
+  <main style="width: 100%; height: 100%;" [@routerAnimations]="prepareRoute(segundo)">
+    <router-outlet #segundo="outlet" ></router-outlet>
+  </main>
+
 </app-nav-bar>

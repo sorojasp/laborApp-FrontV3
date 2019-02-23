@@ -1,0 +1,97 @@
+{
+  "configVersion": 1,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/4.js",
+        "/favicon.ico",
+        "/index.html",
+        "/main.js",
+        "/polyfills.js",
+        "/runtime.js",
+        "/styles.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png",
+        "/assets/img/abogado.png",
+        "/assets/img/ajustes.png",
+        "/assets/img/cerrar.png",
+        "/assets/img/demanda.png",
+        "/assets/img/favicon.ico",
+        "/assets/img/icon1.png",
+        "/assets/img/icon2.png",
+        "/assets/img/logo.png",
+        "/assets/img/logob.png",
+        "/assets/img/perfil.png",
+        "/assets/img/perfil1.png",
+        "/assets/img/user_default.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/4.js": "4884ae659531b5d7e803ac1e00740f9e93dcfa56",
+    "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/assets/img/abogado.png": "22bbd327049756614bfccf853ccaa3ea40a4951a",
+    "/assets/img/ajustes.png": "091a4f01048cf673961fab9fbc58868e8533f838",
+    "/assets/img/cerrar.png": "a38015fb64762c4b15a072244053705f75120eff",
+    "/assets/img/demanda.png": "d9b7dcc3042290bc8c274c28f017d5eb30663ace",
+    "/assets/img/favicon.ico": "bd510da745a286bc7b94551c82b939b0ac3dc6c6",
+    "/assets/img/icon1.png": "c6d2fe0b0662f88a1de8dd9891eef15c1f53ef52",
+    "/assets/img/icon2.png": "82d2ea50de6315eee8a71ddbab660251ad7f4c36",
+    "/assets/img/logo.png": "75a675626f0b0ceab7445a77111ab7ff7d8ff111",
+    "/assets/img/logob.png": "658c70c5420f9bb06e3143269a6185f44f1da4a2",
+    "/assets/img/perfil.png": "777692d68fe75b345568886ab226b9c974c22df8",
+    "/assets/img/perfil1.png": "46260e04220bccf5f89619f2d2d207ddbcef5d59",
+    "/assets/img/user_default.png": "4ea21c43cc52082c9f6b485c2fa28ced709bd673",
+    "/favicon.ico": "bd510da745a286bc7b94551c82b939b0ac3dc6c6",
+    "/index.html": "964fb12125cd08f7f3457de7892bfafe5d282985",
+    "/main.js": "8873e3820bd9417da848ce3bc1d4bf931750c044",
+    "/polyfills.js": "ce68d153e9b9b6d26b625069c0ee99ae09c6f255",
+    "/runtime.js": "d95a0bc1a99ad52b571fb693a8427a910cedbc4d",
+    "/styles.css": "d2ba0601265dbb6734652d0c98ca02bc2ceec62f"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}

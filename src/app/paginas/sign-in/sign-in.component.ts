@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup ,Validators } from '@angular/forms';
 
 //SnackBar
 import {MatSnackBar} from '@angular/material';
+import { UsuariosService } from '../../services/service.index';
 
 
 @Component({
@@ -16,11 +17,13 @@ import {MatSnackBar} from '@angular/material';
 })
 export class SignInComponent implements OnInit {
 
-  formularioSignIn: FormGroup;
-  //Password
+  formularioSignIn: FormGroup; /* Se esta declarando que formularioSignIn 
+  es de tipo FormGroup */
+  // Password
   hide = true;
 
   constructor(
+    private usuarioService: UsuariosService,
     private formBuilder: FormBuilder,
     public snackBar: MatSnackBar,
     private router: Router) {
@@ -30,17 +33,42 @@ export class SignInComponent implements OnInit {
         'password': [null, Validators.required]
       });
 
+      if(this.usuarioService.estaLogeado()){
+        this.router.navigate(['/usuario'])
+      }
   }
 
   ngOnInit() {
+
   }
 
 
   //MatSnackBar
   openSnackBar() {
-    this.snackBar.open('Credenciales incorrectas', '', {
-      duration: 2500,
-    });
+    if( this.formularioSignIn.valid ){
+
+      this.usuarioService.loginUsuario(this.formularioSignIn.value)
+        .subscribe( (res: any) => {
+
+          if (res){
+
+            this.router.navigate(['/usuario'])
+
+          }else{
+
+            this.snackBar.open('Credenciales incorrectas', '', {
+              duration: 2500,
+            });
+          }
+
+        })
+    }else{
+
+      this.snackBar.open('Ingresaste un dato mal', '', {
+        duration: 2500,
+      });
+    }
+
   }
 
   //Email

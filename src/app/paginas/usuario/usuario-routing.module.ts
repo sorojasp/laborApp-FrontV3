@@ -7,6 +7,8 @@ import { ContactarAbogadoComponent } from './contactar-abogado/contactar-abogado
 import { PerfilComponent } from './perfil/perfil.component';
 import { DatosDemandadoComponent } from './generar-demanda/datos-demandado/datos-demandado.component';
 import { DatosContratoComponent } from './generar-demanda/datos-contrato/datos-contrato.component';
+import { SeleccionConflictosComponent } from './generar-demanda/seleccion-conflictos/seleccion-conflictos.component';
+
 
 const routes: Routes = [
 
@@ -15,18 +17,19 @@ const routes: Routes = [
   {
 
     path: 'generar',
-    children:[
+    children: [
 
       { path: 'datos-demandado', component: DatosDemandadoComponent },
       { path: 'datos-contrato', component: DatosContratoComponent },
+      { path:  'seleccion-conflictos', component: SeleccionConflictosComponent},
       { path: '', redirectTo: 'datos-demandado', pathMatch: 'full' },
 
     ]
 
   },
   { path: 'contactar-abogado', component: ContactarAbogadoComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full'},
-  { path: '**', redirectTo: 'home', pathMatch: 'full'}
+   { path: '', redirectTo: 'home', pathMatch: 'full'}, // A las rutas vacias la direcciona a esta
+   { path: '**', redirectTo: 'home', pathMatch: 'full'} // A todas las rutas la direcciona a esta
 
 ];
 

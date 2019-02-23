@@ -17,6 +17,7 @@ import { DemandaJuridicaComponent } from './generar-demanda/datos-demandado/dema
 import { RepresentanteComponent } from './generar-demanda/datos-demandado/demanda-juridica/representante/representante.component';
 import { DemandaNaturalComponent } from './generar-demanda/datos-demandado/demanda-natural/demanda-natural.component';
 import { DatosContratoComponent } from './generar-demanda/datos-contrato/datos-contrato.component';
+import { SeleccionConflictosComponent } from './generar-demanda/seleccion-conflictos/seleccion-conflictos.component';
 
 
 
@@ -30,6 +31,12 @@ import { DatosContratoComponent } from './generar-demanda/datos-contrato/datos-c
     PerfilComponent,
     ContactarAbogadoComponent,
     DatosContratoComponent,
+    SeleccionConflictosComponent,
+    /* En estos componenentes se pueden usar los módulos que se
+    importan desde imports
+
+    */
+
 
 
   ],
@@ -37,9 +44,10 @@ import { DatosContratoComponent } from './generar-demanda/datos-contrato/datos-c
     CommonModule,
     UsuarioRoutingModule,
     MaterialModule,
-    FragmentosModule,
+    FragmentosModule, // aquí se incluye navbar
     FormsModule,
     ReactiveFormsModule,
+
   ],
 
 })
