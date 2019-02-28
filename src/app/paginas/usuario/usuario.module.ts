@@ -2,16 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-//Custom module
+// Custom module
 import { FragmentosModule } from 'src/app/fragmentos/fragmentos.module';
 import { UsuarioRoutingModule } from './usuario-routing.module';
 import { MaterialModule } from '../../material';
 
-//Componentes
+// Componentes
 import { HomeComponent } from './home/home.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { ContactarAbogadoComponent } from './contactar-abogado/contactar-abogado.component';
-    //Componentes para generar la demanda
+    // Componentes para generar la demanda
 import { DatosDemandadoComponent } from './generar-demanda/datos-demandado/datos-demandado.component';
 import { DemandaJuridicaComponent } from './generar-demanda/datos-demandado/demanda-juridica/demanda-juridica.component';
 import { RepresentanteComponent } from './generar-demanda/datos-demandado/demanda-juridica/representante/representante.component';

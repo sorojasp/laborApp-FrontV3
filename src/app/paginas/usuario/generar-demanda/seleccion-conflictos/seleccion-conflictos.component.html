@@ -1,8 +1,42 @@
+<form class="full-width" [formGroup]="formularioSeleccionConflictos" (ngSubmit)="subirDatosConflictos()">
+<div class="container">
+  <h5 class="titulo">Selección conflictos</h5>
+  <h4 class="Subtitulo">Por favor seleccionarlos en el orden en que indican los números del lado izquierdo de conflicto posible</h4>
 <mat-card class="card">
+    <mat-card-content>
 
-<p>
-  seleccion-conflictos works!
-</p>
+    <div class="full-width nombre-inputs">
+      <mat-checkbox class="half-width" formControlName="despidoInjustificado" >1. Despido injustificado</mat-checkbox>
+      <mat-checkbox  class="half-width" formControlName="noPagoSalario">2. Pago Salario</mat-checkbox>
+    </div>
 
+    <div class="full-width nombre-inputs">
+        <mat-checkbox class="half-width" formControlName="noPagoVacaciones">3. Vacaciones</mat-checkbox>
+        <mat-checkbox class="half-width" formControlName="noPagoCesantias">4. Cesantias e interéses de cesantias</mat-checkbox>
+    </div>
 
+    <div class="full-width nombre-inputs">
+        <mat-checkbox class="half-width" formControlName="noPagoARL" >5. ARL</mat-checkbox>
+        <mat-checkbox class="half-width" formControlName="noPagoPensiones">6. Pensiones</mat-checkbox>
+    </div>
+
+    <div class="full-width nombre-inputs">
+        <mat-checkbox class="half-width" formControlName="noPagoPrimas">7. Primas</mat-checkbox>
+        <mat-checkbox class="half-width" formControlName="noPagoHorasExtras">8. Horas extras</mat-checkbox>
+    </div>
+
+    <div class="full-width nombre-inputs">
+        <mat-checkbox class="full-width" formControlName="noPagoFestiDomini">Festivos y Dominicales</mat-checkbox>
+    </div>
+
+  </mat-card-content>
 </mat-card>
+<button mat-flat-button class="btn btn-success"
+type="submit"
+[disabled]="!this.formularioSeleccionConflictos.valid">
+Continuar
+</button>
+</div>
+</form>
+  
+  
