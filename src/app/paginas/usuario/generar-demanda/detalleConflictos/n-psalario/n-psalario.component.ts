@@ -32,7 +32,19 @@ export class NPsalarioComponent implements OnInit {
 
 
   subirNoPagoSalario(): void {
-    
+    localStorage.setItem('detalleNoPagoSalario', JSON.stringify(this.formularioNoPagoSalario.value));
+    if (this.dataOfConflict.noPagoVacaciones === true ) {
+      this.router_.navigate(['../detalle-NoPagoVacas'], { relativeTo: this.activatedRoute });
+    } else if ( this.dataOfConflict.noPagoCesantias === true) {
+      this.router_.navigate(['../detalle-NoPagoCesantias'], { relativeTo: this.activatedRoute });
+    } else if ( this.dataOfConflict.noPagoARL === true ||
+                this.dataOfConflict.noPagoPensiones === true ||
+                this.dataOfConflict.noPagoPrimas === true ||
+                this.dataOfConflict.noPagoHorasExtras === true ||
+                this.dataOfConflict.noPagoFestiDomini === true
+        ) {
+          alert('debe contactar un abogado');
+        }
 
   }
 
