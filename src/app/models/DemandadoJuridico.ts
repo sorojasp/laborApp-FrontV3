@@ -6,4 +6,5 @@ export interface DemandadoJuridico {
     emailEmpresa: string;
     direccionEmpresa: string;
     codigoDaneMunicipio: number;
-    }
+
+}

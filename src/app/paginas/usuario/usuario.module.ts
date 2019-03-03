@@ -18,7 +18,10 @@ import { RepresentanteComponent } from './generar-demanda/datos-demandado/demand
 import { DemandaNaturalComponent } from './generar-demanda/datos-demandado/demanda-natural/demanda-natural.component';
 import { DatosContratoComponent } from './generar-demanda/datos-contrato/datos-contrato.component';
 import { SeleccionConflictosComponent } from './generar-demanda/seleccion-conflictos/seleccion-conflictos.component';
-
+import { DespidoComponent } from './generar-demanda/detalleConflictos/despido/despido.component';
+import { NPsalarioComponent } from './generar-demanda/detalleConflictos/n-psalario/n-psalario.component';
+import { NPvacasComponent } from './generar-demanda/detalleConflictos/n-pvacas/n-pvacas.component';
+import { NPcesantiasComponent } from './generar-demanda/detalleConflictos/n-pcesantias/n-pcesantias.component';
 
 
 @NgModule({
@@ -32,6 +35,10 @@ import { SeleccionConflictosComponent } from './generar-demanda/seleccion-confli
     ContactarAbogadoComponent,
     DatosContratoComponent,
     SeleccionConflictosComponent,
+    DespidoComponent,
+    NPsalarioComponent,
+    NPvacasComponent,
+    NPcesantiasComponent
     /* En estos componenentes se pueden usar los módulos que se
     importan desde imports
 

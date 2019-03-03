@@ -1,0 +1,27 @@
+<form  class="full-width"   (ngSubmit)="subirNoPagoSalario()"  [formGroup]="formularioNoPagoSalario"    >
+
+    <div class="container">
+    
+      <h5 class="titulo">Detalle conflicto no pago de salario</h5>
+    
+      <mat-card class="card">
+    
+        
+    
+          <mat-form-field class="full-width">
+              <input matInput [matDatepicker]="picker1" placeholder="Ingrese fecha de último salario cancelado" 
+              (click)="picker1.open()" formControlName="fechaNoPagoSalario" >
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker touchUi #picker1></mat-datepicker>
+            </mat-form-field>
+          
+            </mat-card>
+  
+            <button mat-flat-button class="btn btn-success"
+            type="submit"
+            [disabled]="!this.formularioNoPagoSalario.valid"
+            >
+            Continuar
+          </button>
+          </div>
+        </form>

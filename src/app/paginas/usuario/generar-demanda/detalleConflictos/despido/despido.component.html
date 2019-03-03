@@ -1,0 +1,27 @@
+<form  class="full-width" [formGroup]="formularioDetalleDSJC" (ngSubmit)="enviarDetalleDespidoSJC()" >
+
+  <div class="container">
+  
+    <h5 class="titulo">Detalle conflicto despido injustificado</h5>
+  
+    <mat-card class="card">
+  
+      
+  
+        <mat-form-field class="full-width">
+            <input matInput [matDatepicker]="picker1" placeholder="Ingrese fecha de despido injustificado" 
+            (click)="picker1.open()" formControlName="fechaDespidoSJC" >
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker1></mat-datepicker>
+          </mat-form-field>
+        
+          </mat-card>
+
+          <button mat-flat-button class="btn btn-success"
+          type="submit"
+          [disabled]="!this.formularioDetalleDSJC.valid"
+          >
+          Continuar
+        </button>
+        </div>
+      </form>

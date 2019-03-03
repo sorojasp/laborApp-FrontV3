@@ -1,7 +1,7 @@
 <form class="full-width" [formGroup]="formularioSeleccionConflictos" (ngSubmit)="subirDatosConflictos()">
 <div class="container">
   <h5 class="titulo">Selección conflictos</h5>
-  <h4 class="Subtitulo">Por favor seleccionarlos en el orden en que indican los números del lado izquierdo de conflicto posible</h4>
+ 
 <mat-card class="card">
     <mat-card-content>
 
@@ -26,17 +26,20 @@
     </div>
 
     <div class="full-width nombre-inputs">
-        <mat-checkbox class="full-width" formControlName="noPagoFestiDomini">Festivos y Dominicales</mat-checkbox>
+        <mat-checkbox class="full-width" formControlName="noPagoFestiDomini">9. Festivos y Dominicales</mat-checkbox>
     </div>
 
   </mat-card-content>
 </mat-card>
 <button mat-flat-button class="btn btn-success"
 type="submit"
-[disabled]="!this.formularioSeleccionConflictos.valid">
+>
 Continuar
 </button>
 </div>
 </form>
+
+
+  
   
   

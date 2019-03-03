@@ -31,9 +31,10 @@ export class DemandaPdfService {
 
   }
 
-  descargarPdf(){
+  descargarPdf() {
 
-    return this.http.get(`${ this.URL }/descargar/${ this.usuarioService.usuario.cedulaPersona }`, { headers: new HttpHeaders({'token': `${ this.usuarioService.token }`}), responseType: 'blob' })
+    return this.http.get(`${ this.URL }/descargar/${ this.usuarioService.usuario.cedulaPersona }`, { headers: new HttpHeaders(
+      {'token': `${ this.usuarioService.token }`}), responseType: 'blob' })
 
   }
 

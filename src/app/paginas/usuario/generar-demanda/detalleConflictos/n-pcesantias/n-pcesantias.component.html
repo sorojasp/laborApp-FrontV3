@@ -1,0 +1,26 @@
+<form  class="full-width" >
+
+    <div class="container">
+    
+      <h5 class="titulo">Detalle conflcito no pago de cesantias</h5>
+    
+      <mat-card class="card">
+    
+        
+    
+          <mat-form-field class="full-width">
+              <input matInput [matDatepicker]="picker1" placeholder="Ingrese fecha de últimas cesantias pagadas" 
+              (click)="picker1.open()" formControlName="fechaInicioContrato">
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker touchUi #picker1></mat-datepicker>
+            </mat-form-field>
+          
+            </mat-card>
+  
+            <button mat-flat-button class="btn btn-success"
+            type="submit"
+            >
+            Continuar
+          </button>
+          </div>
+        </form>

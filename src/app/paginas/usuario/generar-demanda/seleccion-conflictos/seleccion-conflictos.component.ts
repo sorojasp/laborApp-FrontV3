@@ -8,12 +8,13 @@ import {
   } from '@angular/forms';
 
 
-
 @Component({
   selector: 'app-seleccion-conflictos',
   templateUrl: './seleccion-conflictos.component.html',
   styleUrls: ['./seleccion-conflictos.component.css']
 })
+
+
 export class SeleccionConflictosComponent  {
 
   checked = false;
@@ -21,6 +22,9 @@ export class SeleccionConflictosComponent  {
   labelPosition = 'after';
   disabled = false;
   formularioSeleccionConflictos: FormGroup;
+  animal: string;
+  name: string;
+
 
 constructor(
   private formBuilder: FormBuilder,
@@ -39,15 +43,41 @@ constructor(
     'noPagoFestiDomini': [null]
 
   });
+
+
+
+
 }
+
 
 
 subirDatosConflictos() {
-localStorage.removeItem('value');
+localStorage.setItem('dataConflictos', JSON.stringify(this.formularioSeleccionConflictos.value));
+if (this.formularioSeleccionConflictos.value.despidoInjustificado === true) {
+  this.router_.navigate(['../detalle-despidoSJC'], { relativeTo: this.activatedRoute });
+
+}  else if (this.formularioSeleccionConflictos.value.noPagoSalario === true) {
+  this.router_.navigate(['../detalle-NoPagoSalario'], { relativeTo: this.activatedRoute });
+} else if (this.formularioSeleccionConflictos.value.noPagoVacaciones === true) {
+  this.router_.navigate(['../detalle-NoPagoVacas'], { relativeTo: this.activatedRoute });
+} else if (this.formularioSeleccionConflictos.value.noPagoCesantias === true) {
+  this.router_.navigate(['../detalle-NoPagoCesantias'], { relativeTo: this.activatedRoute });
+
+} else if (this.formularioSeleccionConflictos.value.noPagoARL === true ||
+           this.formularioSeleccionConflictos.value.noPagoPensiones === true ||
+           this.formularioSeleccionConflictos.value.noPagoPrimas === true ||
+           this.formularioSeleccionConflictos.value.noPagoHorasExtras === true ||
+           this.formularioSeleccionConflictos.value.noPagoFestiDomini === true) {
+
+            console.log('va a ventana contactar abogado ');
+} else {
+
+  alert('Debes seleccionar al menos un conflicto');
 
 }
 
 
+}
 
 }
 

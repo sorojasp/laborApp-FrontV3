@@ -8,6 +8,10 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { DatosDemandadoComponent } from './generar-demanda/datos-demandado/datos-demandado.component';
 import { DatosContratoComponent } from './generar-demanda/datos-contrato/datos-contrato.component';
 import { SeleccionConflictosComponent } from './generar-demanda/seleccion-conflictos/seleccion-conflictos.component';
+import {DespidoComponent} from './generar-demanda/detalleConflictos/despido/despido.component';
+import { NPsalarioComponent } from './generar-demanda/detalleConflictos/n-psalario/n-psalario.component';
+import {NPvacasComponent} from './generar-demanda/detalleConflictos/n-pvacas/n-pvacas.component';
+import {NPcesantiasComponent} from './generar-demanda/detalleConflictos/n-pcesantias/n-pcesantias.component';
 
 
 const routes: Routes = [
@@ -21,7 +25,12 @@ const routes: Routes = [
 
       { path: 'datos-demandado', component: DatosDemandadoComponent },
       { path: 'datos-contrato', component: DatosContratoComponent },
-      { path:  'seleccion-conflictos', component: SeleccionConflictosComponent},
+      { path: 'seleccion-conflictos', component: SeleccionConflictosComponent},
+      { path:  'detalle-despidoSJC', component: DespidoComponent},
+      { path:  'detalle-NoPagoSalario', component: NPsalarioComponent},
+      { path:  'detalle-NoPagoVacas', component: NPvacasComponent},
+      { path:  'detalle-NoPagoCesantias', component: NPcesantiasComponent},
+
       { path: '', redirectTo: 'datos-demandado', pathMatch: 'full' },
 
     ]

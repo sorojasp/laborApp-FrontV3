@@ -18,7 +18,7 @@ export class UsuariosService {
     this.refreshPage();
   }
 
-  renovarToken(){
+  renovarToken() {
     return this.http.post(`${this.URL}/renuevaToken`, null, {headers: new HttpHeaders({ 'token': `${this.token}`})})
       .pipe(
 
@@ -35,12 +35,12 @@ export class UsuariosService {
     return (this.token.length > 5 ) ? true : false;
   }
 
-  refreshPage(){
-    if(localStorage.getItem('token')){
+  refreshPage() {
+    if (localStorage.getItem('token')) {
 
       this.token = localStorage.getItem('token');
-      this.usuario = JSON.parse(localStorage.getItem('usuario'))
-    }else{
+      this.usuario = JSON.parse(localStorage.getItem('usuario'));
+    } else {
       this.token = '';
       this.usuario = null;
     }
@@ -48,19 +48,19 @@ export class UsuariosService {
 
   guardarEnStorage(token: string, id?: string, usuario?: Usuario ){
 
-    if( id === undefined && usuario === undefined ){
+    if ( id === undefined && usuario === undefined ){
       console.log('opcion 1')
       localStorage.setItem('token', token);
-    }else if( id === undefined ){
+    } else if ( id === undefined ){
       console.log('opcion 2')
       localStorage.setItem('token', token);
       localStorage.setItem('usuario', JSON.stringify( usuario ));
       this.usuario = usuario;
-    }else if( usuario === undefined ){
+    } else if ( usuario === undefined ){
       console.log('opcion 2')
       localStorage.setItem('token', token);
       localStorage.setItem('id', id);
-    }else{
+    } else {
       localStorage.setItem('id', id);
       localStorage.setItem('token', token);
       localStorage.setItem('usuario', JSON.stringify( usuario ));
