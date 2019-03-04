@@ -31,7 +31,7 @@ export class UsuariosService {
 
   }
 
-  estaLogeado(){
+  estaLogeado() {
     return (this.token.length > 5 ) ? true : false;
   }
 
@@ -49,15 +49,15 @@ export class UsuariosService {
   guardarEnStorage(token: string, id?: string, usuario?: Usuario ){
 
     if ( id === undefined && usuario === undefined ){
-      console.log('opcion 1')
+      console.log('opcion 1');
       localStorage.setItem('token', token);
-    } else if ( id === undefined ){
-      console.log('opcion 2')
+    } else if ( id === undefined ) {
+      console.log('opcion 2');
       localStorage.setItem('token', token);
       localStorage.setItem('usuario', JSON.stringify( usuario ));
       this.usuario = usuario;
     } else if ( usuario === undefined ){
-      console.log('opcion 2')
+      console.log('opcion 2');
       localStorage.setItem('token', token);
       localStorage.setItem('id', id);
     } else {
@@ -81,12 +81,12 @@ export class UsuariosService {
     this.router.navigate(['/login']);
   }
 
-  loginUsuario(credenciales: object){
+  loginUsuario(credenciales: object) {
     return this.http.post(`${this.URL}/login`, credenciales)
       .pipe(
         map( (res: any) => {
 
-          if (!res['ok']){
+          if (!res['ok']) {
             return false;
           }
 

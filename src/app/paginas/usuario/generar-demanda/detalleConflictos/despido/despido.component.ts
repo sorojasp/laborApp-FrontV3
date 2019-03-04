@@ -1,7 +1,5 @@
 import { Component, OnInit, AfterContentChecked, AfterContentInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, Validator } from '@angular/forms';
-
-
 import { Router, ActivatedRoute } from '@angular/router';
 
 
@@ -32,29 +30,35 @@ export class DespidoComponent implements OnInit, AfterContentChecked {
   ngOnInit() { }
   ngAfterContentChecked() { }
 
+  irNuevaRuta() {
+    if (this.dataOfConflict.noPagoSalario === true) {
+      this.router_.navigate(['../detalle-NoPagoSalario'], { relativeTo: this.activatedRoute });
+    } else if (this.dataOfConflict.noPagoVacaciones === true ) {
+      this.router_.navigate(['../detalle-NoPagoVacas'], { relativeTo: this.activatedRoute });
+    } else if ( this.dataOfConflict.noPagoCesantias === true) {
+      this.router_.navigate(['../detalle-NoPagoCesantias'], { relativeTo: this.activatedRoute });
+    } else if ( this.dataOfConflict.noPagoARL === true ||
+                this.dataOfConflict.noPagoPensiones === true ||
+                this.dataOfConflict.noPagoPrimas === true ||
+                this.dataOfConflict.noPagoHorasExtras === true ||
+                this.dataOfConflict.noPagoFestiDomini === true
+        ) {
+          alert('debe contactar un abogado');
+        } else {
+          alert ('en breve se generará su demanda');
+        }
+
+
+  }
+
+
+
   enviarDetalleDespidoSJC(): void {
-     localStorage.setItem('detalleDespidoSJC', JSON.stringify(this.formularioDetalleDSJC.value));
 
-  if (this.dataOfConflict.noPagoSalario === true) {
-    this.router_.navigate(['../detalle-NoPagoSalario'], { relativeTo: this.activatedRoute });
-  } else if (this.dataOfConflict.noPagoVacaciones === true ) {
-    this.router_.navigate(['../detalle-NoPagoVacas'], { relativeTo: this.activatedRoute });
-  } else if ( this.dataOfConflict.noPagoCesantias === true) {
-    this.router_.navigate(['../detalle-NoPagoCesantias'], { relativeTo: this.activatedRoute });
-  } else if ( this.dataOfConflict.noPagoARL === true ||
-              this.dataOfConflict.noPagoPensiones === true ||
-              this.dataOfConflict.noPagoPrimas === true ||
-              this.dataOfConflict.noPagoHorasExtras === true ||
-              this.dataOfConflict.noPagoFestiDomini === true
-      ) {
-        alert('debe contactar un abogado');
-      }
-
-
-
-
-  console.log(this.formularioDetalleDSJC.value.fechaDespidoSJC);
-  console.log(this.formularioDetalleDSJC.valid);
+    localStorage.setItem('detalleDespidoSJC', JSON.stringify(this.formularioDetalleDSJC.value));
+    console.log(this.formularioDetalleDSJC.value.fechaDespidoSJC);
+    console.log(this.formularioDetalleDSJC.valid);
+    this.irNuevaRuta();
 
   }
 

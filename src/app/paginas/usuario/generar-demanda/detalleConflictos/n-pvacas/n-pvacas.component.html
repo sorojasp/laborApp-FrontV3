@@ -1,4 +1,4 @@
-<form  class="full-width" >
+<form  class="full-width"  (ngSubmit)="subirDetalleNoPagoVacas()" [formGroup]="formularioDetalleNoPagoVacas">
 
     <div class="container">
     
@@ -10,7 +10,7 @@
     
           <mat-form-field class="full-width">
               <input matInput [matDatepicker]="picker1" placeholder="Ingrese fecha de últimas vacaciones tomadas o pagadas" 
-              (click)="picker1.open()" formControlName="fechaInicioContrato">
+              (click)="picker1.open()" formControlName="fechaInicioNoPagoVacaciones">
               <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
               <mat-datepicker touchUi #picker1></mat-datepicker>
             </mat-form-field>
@@ -19,6 +19,7 @@
   
             <button mat-flat-button class="btn btn-success"
             type="submit"
+            [disabled]="!this.formularioDetalleNoPagoVacas.valid"
             >
             Continuar
           </button>

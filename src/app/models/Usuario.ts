@@ -7,4 +7,4 @@ fechaNacimientoPersona: string;
 correoPersona: string;
 codigoDaneMunicipio: number;
 
-};
+}

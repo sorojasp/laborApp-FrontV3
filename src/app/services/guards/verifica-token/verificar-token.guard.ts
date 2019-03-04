@@ -19,7 +19,7 @@ export class VerificarTokenGuard implements CanActivateChild {
     const payload = JSON.parse( atob( token.split('.')[1]) );
 
 
-    if (this.expiro(payload.exp)){
+    if (this.expiro(payload.exp)) {
       return false;
     }
 

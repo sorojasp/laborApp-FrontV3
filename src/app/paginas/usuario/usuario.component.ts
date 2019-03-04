@@ -17,7 +17,6 @@ export class UsuarioComponent implements OnInit {
   }
 
   prepareRoute( outlet: RouterOutlet ) {
-    console.log(outlet);
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
 

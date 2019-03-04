@@ -69,7 +69,7 @@ if (this.formularioSeleccionConflictos.value.despidoInjustificado === true) {
            this.formularioSeleccionConflictos.value.noPagoHorasExtras === true ||
            this.formularioSeleccionConflictos.value.noPagoFestiDomini === true) {
 
-            console.log('va a ventana contactar abogado ');
+            alert('la inteligencia artificial de LaborApp inidca que para este caso un abogado se comunicará contigo');
 } else {
 
   alert('Debes seleccionar al menos un conflicto');

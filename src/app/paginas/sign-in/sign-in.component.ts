@@ -62,7 +62,7 @@ export class SignInComponent implements OnInit {
           }
 
         })
-    }else{
+    } else {
 
       this.snackBar.open('Ingresaste un dato mal', '', {
         duration: 2500,

@@ -10,7 +10,7 @@ export class DatosDemandadoComponent implements OnInit {
   opcion: String = 'opcion1';
 
   informacion: boolean = true;
-  
+
 
   constructor() { }
 

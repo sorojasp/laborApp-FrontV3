@@ -16,7 +16,7 @@ export class DemandadoService {
 
   guardarDemandadoJuridico( demandadoJuridico: DemandadoJuridico ) {
 
-    return this.http.post( this.URL_JURIDICA, demandadoJuridico);
+    return this.http.post(this.URL_JURIDICA, demandadoJuridico);
 
   }
 

@@ -77,6 +77,7 @@ export class DemandaJuridicaComponent implements OnInit, AfterContentChecked  {
     this.demandaPdfService.generarPdf(nit)
       .subscribe( async res => {
         console.log(res);
+        this.router.navigate(['../datos-contrato'], {relativeTo: this.activatedRoute});
         await this.enviarPdf();
         await this.descargarPdf();
       }, err => {
@@ -97,7 +98,6 @@ export class DemandaJuridicaComponent implements OnInit, AfterContentChecked  {
     this.demandaPdfService.descargarPdf()
       .subscribe( doc => {
         saveAs( doc, 'demanda.pdf' );
-        this.router.navigate(['../datos-contrato'], {relativeTo: this.activatedRoute});
       }, err => {
         console.log(err);
       });
