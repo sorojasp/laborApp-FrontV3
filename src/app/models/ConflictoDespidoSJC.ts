@@ -1,5 +1,5 @@
 export interface ConflictoDespidoSJC {
-idConflictoDespidoSJC: number;
+idConflictoDespidoSJC?: number;
 idDemandaPersonaNatural?: number;
 idDemandaEmpresa?: number;
 fechaInicioContrato: Date;

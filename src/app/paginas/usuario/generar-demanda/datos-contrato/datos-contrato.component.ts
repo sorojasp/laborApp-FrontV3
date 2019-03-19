@@ -7,6 +7,8 @@ import {
   Validators
   } from '@angular/forms';
 
+import {ContratoLaboralService} from '../../../../services/ContratoLaboral/contrato-laboral.service';
+
 
 
 
@@ -26,6 +28,7 @@ export class DatosContratoComponent implements OnInit, AfterContentChecked {
     private formBuilder: FormBuilder,
     private router_: Router,
     private activatedRoute: ActivatedRoute,
+    private contratoLaboralService: ContratoLaboralService
   ) {
     this.formularioContrato = this.formBuilder.group({
       'tipoContrato': [null, Validators.required],
@@ -41,6 +44,14 @@ export class DatosContratoComponent implements OnInit, AfterContentChecked {
   ngAfterContentChecked() { }
 
   subirDatosContrato() {
+
+    this.contratoLaboralService.guardarContratoLaboral(this.formularioContrato.value)
+    .subscribe(  result => {
+      console.log(result);
+
+    }, err => {
+      console.log(err);
+    });
 
     this.router_.navigate(['../seleccion-conflictos'], { relativeTo: this.activatedRoute });
     let dataContract: any;

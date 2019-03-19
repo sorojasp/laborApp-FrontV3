@@ -22,6 +22,8 @@ import { DespidoComponent } from './generar-demanda/detalleConflictos/despido/de
 import { NPsalarioComponent } from './generar-demanda/detalleConflictos/n-psalario/n-psalario.component';
 import { NPvacasComponent } from './generar-demanda/detalleConflictos/n-pvacas/n-pvacas.component';
 import { NPcesantiasComponent } from './generar-demanda/detalleConflictos/n-pcesantias/n-pcesantias.component';
+import { NPprimaComponent } from './generar-demanda/detalleConflictos/n-pprima/n-pprima.component';
+
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { NPcesantiasComponent } from './generar-demanda/detalleConflictos/n-pces
     DespidoComponent,
     NPsalarioComponent,
     NPvacasComponent,
-    NPcesantiasComponent
+    NPcesantiasComponent,
+    NPprimaComponent
     /* En estos componenentes se pueden usar los módulos que se
     importan desde imports
 

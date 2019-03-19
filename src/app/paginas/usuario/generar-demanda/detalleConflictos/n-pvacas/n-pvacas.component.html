@@ -8,11 +8,18 @@
     
         
     
-          <mat-form-field class="full-width">
-              <input matInput [matDatepicker]="picker1" placeholder="Ingrese fecha de últimas vacaciones tomadas o pagadas" 
+          <mat-form-field class="half-width">
+              <input matInput [matDatepicker]="picker1" placeholder="Ingrese fecha de incio no pago vacaciones" 
               (click)="picker1.open()" formControlName="fechaInicioNoPagoVacaciones">
               <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
               <mat-datepicker touchUi #picker1></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="half-width">
+              <input matInput [matDatepicker]="picker2" placeholder="Ingrese fecha final de  no pago vacaciones" 
+              (click)="picker2.open()" formControlName="fechaFinalNoPagoVacaciones">
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker touchUi #picker2></mat-datepicker>
             </mat-form-field>
           
             </mat-card>

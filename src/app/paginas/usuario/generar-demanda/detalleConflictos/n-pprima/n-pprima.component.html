@@ -1,0 +1,36 @@
+<form  class="full-width"  [formGroup]="detailFormPrimaPay"  (ngSubmit)="uploadPrimaData()">
+
+  <div class="container">
+  
+    <h5 class="titulo">Detalle conflicto no pago de prima</h5>
+  
+    <mat-card class="card">
+       
+  
+      
+      
+        <mat-form-field class="half-width">
+            <input matInput [matDatepicker]="picker1" placeholder="Ingrese fecha de inicio de no pago de prima" 
+            (click)="picker1.open()" formControlName="inicioNoPagoPrima" >
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker1></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field class="half-width" >
+              <input matInput [matDatepicker]="picker2" placeholder="Ingrese fecha de final  de no pago de prima" 
+              (click)="picker2.open()" formControlName="finalNoPagoPrima"  >
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker touchUi #picker2></mat-datepicker>
+            </mat-form-field>
+            
+         
+        </mat-card>
+
+          <button mat-flat-button class="btn btn-success"
+          type="submit"
+          [disabled]="!this.detailFormPrimaPay.valid"
+          >
+          Continuar
+        </button>
+        </div>
+      </form>

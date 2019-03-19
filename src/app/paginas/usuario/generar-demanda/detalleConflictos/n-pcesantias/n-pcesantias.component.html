@@ -8,11 +8,18 @@
     
         
     
-          <mat-form-field class="full-width">
+          <mat-form-field class="half-width">
               <input matInput [matDatepicker]="picker1" placeholder="Ingrese fecha de últimas cesantias pagadas" 
               (click)="picker1.open()" formControlName="fechaInicioNoPagoCesantias">
               <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
               <mat-datepicker touchUi #picker1></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="half-width">
+              <input matInput [matDatepicker]="picker2" placeholder="Ingrese fecha de últimas cesantias pagadas" 
+              (click)="picker2.open()" formControlName="fechaFinalNoPagoCesantias">
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker touchUi #picker2></mat-datepicker>
             </mat-form-field>
           
             </mat-card>

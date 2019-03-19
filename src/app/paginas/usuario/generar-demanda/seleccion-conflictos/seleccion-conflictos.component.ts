@@ -29,7 +29,8 @@ export class SeleccionConflictosComponent  {
 constructor(
   private formBuilder: FormBuilder,
   private router_: Router,
-  private activatedRoute: ActivatedRoute
+  private activatedRoute: ActivatedRoute,
+
 ) {
   this.formularioSeleccionConflictos = this.formBuilder.group({
     'despidoInjustificado': [null],
@@ -53,6 +54,9 @@ constructor(
 
 subirDatosConflictos() {
 localStorage.setItem('dataConflictos', JSON.stringify(this.formularioSeleccionConflictos.value));
+
+
+
 if (this.formularioSeleccionConflictos.value.despidoInjustificado === true) {
   this.router_.navigate(['../detalle-despidoSJC'], { relativeTo: this.activatedRoute });
 
@@ -62,10 +66,11 @@ if (this.formularioSeleccionConflictos.value.despidoInjustificado === true) {
   this.router_.navigate(['../detalle-NoPagoVacas'], { relativeTo: this.activatedRoute });
 } else if (this.formularioSeleccionConflictos.value.noPagoCesantias === true) {
   this.router_.navigate(['../detalle-NoPagoCesantias'], { relativeTo: this.activatedRoute });
+} else if (this.formularioSeleccionConflictos.value.noPagoPrimas === true) {
+  this.router_.navigate(['../detalle-NoPagoPrima'], { relativeTo: this.activatedRoute });
 
 } else if (this.formularioSeleccionConflictos.value.noPagoARL === true ||
            this.formularioSeleccionConflictos.value.noPagoPensiones === true ||
-           this.formularioSeleccionConflictos.value.noPagoPrimas === true ||
            this.formularioSeleccionConflictos.value.noPagoHorasExtras === true ||
            this.formularioSeleccionConflictos.value.noPagoFestiDomini === true) {
 
@@ -75,6 +80,8 @@ if (this.formularioSeleccionConflictos.value.despidoInjustificado === true) {
   alert('Debes seleccionar al menos un conflicto');
 
 }
+
+
 
 
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DemandadoJuridico } from '../../models/DemandadoJuridico';
+import {Empresa} from '../../models/Empresa';
 
 
 
@@ -9,14 +9,14 @@ import { DemandadoJuridico } from '../../models/DemandadoJuridico';
 })
 export class DemandadoService {
 
-  private URL_JURIDICA: string = 'https://laborappi.herokuapp.com/api/laborapp/demandado/guardar/empresa';
+  private URL_JURIDICA  = 'https://back-laborapp.herokuapp.com/api/laborapp/demandado/empresa';
 
   constructor(private http: HttpClient) { }
 
 
-  guardarDemandadoJuridico( demandadoJuridico: DemandadoJuridico ) {
+  guardarDemandadoJuridico( empresa: Empresa ) {
 
-    return this.http.post(this.URL_JURIDICA, demandadoJuridico);
+    return this.http.post(this.URL_JURIDICA, empresa);
 
   }
 

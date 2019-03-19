@@ -33,8 +33,8 @@ export class SignInComponent implements OnInit {
         'password': [null, Validators.required]
       });
 
-      if(this.usuarioService.estaLogeado()){
-        this.router.navigate(['/usuario'])
+      if (this.usuarioService.estaLogeado()) {
+        this.router.navigate(['/usuario']);
       }
   }
 
@@ -45,23 +45,30 @@ export class SignInComponent implements OnInit {
 
   //MatSnackBar
   openSnackBar() {
-    if( this.formularioSignIn.valid ){
+    if ( this.formularioSignIn.valid ) {
 
-      this.usuarioService.loginUsuario(this.formularioSignIn.value)
+      const DataToLogin = {
+        email: this.formularioSignIn.value.email,
+        contrasenaPersona: this.formularioSignIn.value.password
+       };
+
+      console.log(DataToLogin);
+      this.usuarioService.loginUsuario(DataToLogin)
         .subscribe( (res: any) => {
+          console.log(res)
 
-          if (res){
+          if (res) {
 
-            this.router.navigate(['/usuario'])
+            this.router.navigate(['/usuario']);
 
-          }else{
+          } else {
 
             this.snackBar.open('Credenciales incorrectas', '', {
               duration: 2500,
             });
           }
 
-        })
+        });
     } else {
 
       this.snackBar.open('Ingresaste un dato mal', '', {

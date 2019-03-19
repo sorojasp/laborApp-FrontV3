@@ -9,4 +9,5 @@ generoPersona?: string;
 lugarExpedicionCedulaPersona?: string;
 contrasenaPersona?: string;
 codigoCiudad: number;
+correoPersona: string;
 }

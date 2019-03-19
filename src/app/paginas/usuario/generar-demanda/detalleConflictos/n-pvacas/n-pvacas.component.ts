@@ -1,6 +1,8 @@
 import { Component, OnInit, AfterContentChecked, AfterContentInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, Validator, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NoPagoVacacionesService} from '../../../../../services/conflictsDetail/no-pago-vacaciones.service';
+
 @Component({
   selector: 'app-n-pvacas',
   templateUrl: './n-pvacas.component.html',
@@ -14,12 +16,14 @@ export class NPvacasComponent implements OnInit, AfterContentChecked {
   constructor(
     private router_: Router,
     private formBuilder: FormBuilder,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private noPagoVacacionesService: NoPagoVacacionesService
 
   ) {
     this.dataOfConflict = JSON.parse(localStorage.getItem('dataConflictos'));
     this.formularioDetalleNoPagoVacas = this.formBuilder.group({
-      'fechaInicioNoPagoVacaciones': [null, Validators.required]
+      'fechaInicioNoPagoVacaciones': [null, Validators.required],
+      'fechaFinalNoPagoVacaciones': [null, Validators.required]
     });
   }
 
@@ -30,7 +34,13 @@ export class NPvacasComponent implements OnInit, AfterContentChecked {
 
   subirDetalleNoPagoVacas() {
     localStorage.setItem('detalleNoPagoVacas', JSON.stringify(this.formularioDetalleNoPagoVacas.value));
+    this.noPagoVacacionesService.guardarDataConfVaca(this.construyeDatosAenviar())
+    .subscribe( result => {
+      console.log(result);
 
+    }, err => {
+      console.log(err);
+    });
     this.irSiguienteVista();
 
   }
@@ -38,9 +48,10 @@ export class NPvacasComponent implements OnInit, AfterContentChecked {
   irSiguienteVista(): void {
     if ( this.dataOfConflict.noPagoCesantias === true) {
       this.router_.navigate(['../detalle-NoPagoCesantias'], { relativeTo: this.activatedRoute });
+    } else if ( this.dataOfConflict.noPagoPrimas  === true) {
+      this.router_.navigate(['../detalle-NoPagoPrima'], { relativeTo: this.activatedRoute });
     } else if ( this.dataOfConflict.noPagoARL === true ||
                 this.dataOfConflict.noPagoPensiones === true ||
-                this.dataOfConflict.noPagoPrimas === true ||
                 this.dataOfConflict.noPagoHorasExtras === true ||
                 this.dataOfConflict.noPagoFestiDomini === true
         ) {
@@ -49,6 +60,31 @@ export class NPvacasComponent implements OnInit, AfterContentChecked {
           alert ('en breve se generará su demanda');
         }
 
+  }
+
+  construyeDatosAenviar (): any {
+
+    let startContractDate: any;
+    let finishContractDate: any;
+    startContractDate = JSON.parse(localStorage.
+    getItem('infoContrato')).fechaInicioContrato;
+    finishContractDate = JSON.parse(localStorage.
+    getItem('infoContrato')).fechaFinalContrato;
+
+    const dataVacationConflict: any = {
+      idConflictoVacaciones: 0,
+      fechaInicioContrato: startContractDate,
+      fechaFinalContrato: finishContractDate,
+      fechaUltimasVacaciones: this.formularioDetalleNoPagoVacas.value.fechaInicioNoPagoVacaciones,
+      fechaFinalNoPagoVacaciones: this.formularioDetalleNoPagoVacas.value.fechaFinalNoPagoVacaciones,
+      montoDinero_Vacaciones: 500,
+      idDemandaPersonaNatural: 45,
+      idDemandaEmpresa: 89
+
+    }
+
+  return dataVacationConflict;
+  
   }
 
 }

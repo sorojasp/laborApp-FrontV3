@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterContentChecked, AfterContentInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, Validator } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import {DespidoSJCService} from '../../../../../services/conflictsDetail/despido-sjc.service';
 
 
 @Component({
@@ -18,6 +19,8 @@ export class DespidoComponent implements OnInit, AfterContentChecked {
     private formBuilder: FormBuilder,
     private router_: Router,
     private activatedRoute: ActivatedRoute,
+    private despidoSJCService: DespidoSJCService,
+
   ) {
     this.formularioDetalleDSJC = this.formBuilder.group({
       'fechaDespidoSJC': [null, Validators.required]
@@ -31,15 +34,27 @@ export class DespidoComponent implements OnInit, AfterContentChecked {
   ngAfterContentChecked() { }
 
   irNuevaRuta() {
+    this.despidoSJCService.guardarConflictoDSJC(this.DatosParaenviar())
+    .subscribe( result => {
+      console.log(result);
+
+    }, err => {
+      console.log(err);
+    });
+
+
+
+
     if (this.dataOfConflict.noPagoSalario === true) {
       this.router_.navigate(['../detalle-NoPagoSalario'], { relativeTo: this.activatedRoute });
     } else if (this.dataOfConflict.noPagoVacaciones === true ) {
       this.router_.navigate(['../detalle-NoPagoVacas'], { relativeTo: this.activatedRoute });
     } else if ( this.dataOfConflict.noPagoCesantias === true) {
       this.router_.navigate(['../detalle-NoPagoCesantias'], { relativeTo: this.activatedRoute });
+    } else if ( this.dataOfConflict.noPagoPrimas  === true) {
+      this.router_.navigate(['../detalle-NoPagoPrima'], { relativeTo: this.activatedRoute });
     } else if ( this.dataOfConflict.noPagoARL === true ||
                 this.dataOfConflict.noPagoPensiones === true ||
-                this.dataOfConflict.noPagoPrimas === true ||
                 this.dataOfConflict.noPagoHorasExtras === true ||
                 this.dataOfConflict.noPagoFestiDomini === true
         ) {
@@ -51,16 +66,32 @@ export class DespidoComponent implements OnInit, AfterContentChecked {
 
   }
 
+  DatosParaenviar(): any {
+
+    let startContractDate: any;
+    startContractDate = JSON.parse(localStorage.
+      getItem('infoContrato')).fechaInicioContrato;
+    const despidoSJCdata: object  = {
+      idConflictoDespidoSJC: 0,
+      idDemandaPersonaNatural: 0,
+      idDemandaEmpresa: 0,
+      fechaInicioContrato: startContractDate  ,
+      fechaDespido: this.formularioDetalleDSJC.value.fechaDespidoSJC,
+      montoDinero_DSJC: 0
+    };
+    return despidoSJCdata;
+  }
+
 
 
   enviarDetalleDespidoSJC(): void {
 
     localStorage.setItem('detalleDespidoSJC', JSON.stringify(this.formularioDetalleDSJC.value));
-    console.log(this.formularioDetalleDSJC.value.fechaDespidoSJC);
-    console.log(this.formularioDetalleDSJC.valid);
+    console.log(this.formularioDetalleDSJC.value.fechaDespidoSJC.getUTCFullYear());
     this.irNuevaRuta();
 
   }
 
 
 }
+

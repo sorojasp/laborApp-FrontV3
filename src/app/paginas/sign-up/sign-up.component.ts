@@ -1,13 +1,16 @@
 import { Component, OnInit} from '@angular/core';
-import { Router }  from '@angular/router';
+import { Router } from '@angular/router';
 
-//snackBar
+// snackBar
 import {MatSnackBar} from '@angular/material';
 
-//Modelos
+// Modelos
 import { Usuario } from '../../models/Usuario';
-//Servicios
+import {Persona} from '../../models/Persona';
+// Servicios
 import { UsuariosService} from '../../services/service.index';
+import {PersonasService} from '../../services/Personas/personas.service';
+
 
 
 
@@ -22,15 +25,16 @@ export class SignUpComponent implements OnInit {
   documentoVisual: boolean = false;
   fechaNacivisuai: boolean = false;
   correoContraseVisua: boolean = false ;
-  datosForm1: any;
-  datosForm2: any;
-  datosForm3: any;
-  datosForm4: any;
+  public datosForm1: any;
+  public datosForm2: any;
+  public datosForm3: any;
+  public datosForm4: any;
 
 
 
  constructor(
    private usuariosService: UsuariosService,
+   private personasService: PersonasService,
    public router: Router,
    public snackBar: MatSnackBar) {}
 
@@ -76,6 +80,8 @@ export class SignUpComponent implements OnInit {
 
     this.datosForm4 = datoCorreoContrase;
 
+    /*
+
     const informacionUsuario: Usuario = {
       cedulaPersona: this.datosForm2.cedulaUsuario,
       nombresPersona: this.datosForm1.nombreUs,
@@ -84,7 +90,47 @@ export class SignUpComponent implements OnInit {
       correoPersona: this.datosForm4.correoUs,
       codigoDaneMunicipio: 6768
     };
+    */
 
+
+
+    const informacionPersona: Persona = {
+      tipoDocumentoPersona: 'CC', //  'CC' 'CE' 'Pasaporte' 'Carnet' 'Diplomatico'
+      numeroDocumentoPersona: this.datosForm2.cedulaUsuario,
+      nombresPersona: this.datosForm1.nombreUs,
+      apellidosPersona: this.datosForm1.apellidoUs,
+      fechaNacimientoPersona: this.datosForm3.fechaNacimiento,
+      direccionPersona: ' ',
+      generoPersona: this.datosForm2.generoUsuario,
+      lugarExpedicionCedulaPersona: this.datosForm2.lugarUsuario,
+      contrasenaPersona: this.datosForm4.keyUs,
+      codigoCiudad: 85,
+      correoPersona: this.datosForm4.correoUs  // ****como se envía el correo?
+    };
+
+    console.log(this.datosForm2);
+
+
+
+    this.personasService.guardarPersona(informacionPersona)
+    .subscribe(
+      res => {
+        if (res) {
+          this.openSnackBar('Registro exitoso');
+          this.router.navigate(['/login']);
+        }
+      },
+      err => {
+        if (err.error.ok === false) {
+          this.openSnackBar('**Ya se encuentra registrado**');
+          this.router.navigate(['/login']);
+        }
+      }
+    );
+
+
+
+/*
 
     this.usuariosService.guardarUsuarios(informacionUsuario)
     .subscribe(
@@ -101,6 +147,8 @@ export class SignUpComponent implements OnInit {
         }
       }
     );
+
+    */
 
 
   }

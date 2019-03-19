@@ -8,11 +8,18 @@
     
         
     
-          <mat-form-field class="full-width">
-              <input matInput [matDatepicker]="picker1" placeholder="Ingrese fecha de último salario cancelado" 
+          <mat-form-field class="half-width">
+              <input matInput [matDatepicker]="picker1" placeholder="Ingrese fecha de inicio de no pago de salario" 
               (click)="picker1.open()" formControlName="fechaNoPagoSalario" >
               <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
               <mat-datepicker touchUi #picker1></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="half-width">
+              <input matInput [matDatepicker]="picker2" placeholder="Ingrese fecha de final de no pago de salario" 
+              (click)="picker2.open()" formControlName="fechaFinalNoPagoSalario" >
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker touchUi #picker2></mat-datepicker>
             </mat-form-field>
           
             </mat-card>

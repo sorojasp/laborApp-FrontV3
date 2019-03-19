@@ -12,7 +12,7 @@ import {DespidoComponent} from './generar-demanda/detalleConflictos/despido/desp
 import { NPsalarioComponent } from './generar-demanda/detalleConflictos/n-psalario/n-psalario.component';
 import {NPvacasComponent} from './generar-demanda/detalleConflictos/n-pvacas/n-pvacas.component';
 import {NPcesantiasComponent} from './generar-demanda/detalleConflictos/n-pcesantias/n-pcesantias.component';
-
+import {NPprimaComponent} from './generar-demanda/detalleConflictos/n-pprima/n-pprima.component';
 
 const routes: Routes = [
 
@@ -30,6 +30,7 @@ const routes: Routes = [
       { path:  'detalle-NoPagoSalario', component: NPsalarioComponent},
       { path:  'detalle-NoPagoVacas', component: NPvacasComponent},
       { path:  'detalle-NoPagoCesantias', component: NPcesantiasComponent},
+      { path:  'detalle-NoPagoPrima', component: NPprimaComponent},
 
       { path: '', redirectTo: 'datos-demandado', pathMatch: 'full' },
 

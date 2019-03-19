@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class DemandaNaturalComponent implements OnInit {
 
-  formularioNatural:FormGroup;
+  formularioNatural: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
 

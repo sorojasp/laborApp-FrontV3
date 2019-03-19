@@ -12,6 +12,11 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./demanda-juridica.component.css']
 })
 export class DemandaJuridicaComponent implements OnInit, AfterContentChecked  {
+  private tipoDocumentoPersona: string;
+  private numeroDocumentoPersona: number;
+  private nombresPersona: string;
+  private apellidosPersona: string;
+  private chequeado = false;
 
   formularioJuridica: FormGroup;
 
@@ -33,7 +38,9 @@ export class DemandaJuridicaComponent implements OnInit, AfterContentChecked  {
         'direccion':    [null, Validators.required],
         'departamento': [null, Validators.required],
         'municipio':    [null, Validators.required]
-      })
+      }),
+      'checkedDatosRepresentante': [null]
+
     });
 
   }
@@ -45,27 +52,49 @@ export class DemandaJuridicaComponent implements OnInit, AfterContentChecked  {
 
   eventoHijoFormulario(e) {
     this.formularioRepresentante = e;
+    console.log(this.formularioJuridica.value.checkedDatosRepresentante);
+
+
   }
 
 
-  guardarDemandado() {
+  guardarDemandado(cheked: boolean) {
+
+    if (cheked) {
+
+      this.formularioRepresentante = this.formularioRepresentante;
+      this.nombresPersona = this.formularioRepresentante.value.nombre;
+      this.apellidosPersona = this.formularioRepresentante.value.apellido;
+      this.tipoDocumentoPersona = this.formularioRepresentante.value.documento.tipoDeDocumento;
+      this.numeroDocumentoPersona = parseInt(this.formularioRepresentante.value.documento.numeroDeDocumento, 10);
+    }
 
     const objetoDemandadoJuridico = {
 
       NItEmpresa: this.formularioJuridica.value.nit,
       nombreEmpresaRS: this.formularioJuridica.value.razonSocial,
+      direccionEmpresa: this.formularioJuridica.value.ubicacion.direccion,
       telefonoEmpresa: this.formularioJuridica.value.telefono ,
       emailEmpresa: this.formularioJuridica.value.email,
-      direccionEmpresa: this.formularioJuridica.value.ubicacion.direccion,
-      codigoDaneMunicipio: 90
-
+      codigoCiudad: 8, // this.formularioJuridica.value.municipio,
+      tipoDocumentoPersona: this.tipoDocumentoPersona,
+      numeroDocumentoPersona: this.numeroDocumentoPersona,
+      nombresPersona: this.nombresPersona,
+      apellidosPersona: this.apellidosPersona
     };
 
 
-    this.demandadoService.guardarDemandadoJuridico( objetoDemandadoJuridico )
-      .subscribe(async res => {
 
-        await this.generarPdf();
+   console.log(objetoDemandadoJuridico);
+    this.demandadoService.guardarDemandadoJuridico( objetoDemandadoJuridico )
+      .subscribe( res => {
+
+        // await this.generarPdf();
+
+        console.log(res);
+
+      }, err => {
+        console.log(err);
 
 
       });
@@ -105,9 +134,10 @@ export class DemandaJuridicaComponent implements OnInit, AfterContentChecked  {
 
 
 
-  public async correrPrueba() {
+  public async correrPrueba(cheked) {
 
-    await this.guardarDemandado();
+
+    await this.guardarDemandado(cheked);
     // await this.generarPdf();
     // await this.enviarPdf();
     // await this.descargarPdf();
@@ -116,6 +146,8 @@ export class DemandaJuridicaComponent implements OnInit, AfterContentChecked  {
 
 
   verificar( cheked ) {
+
+    // if ( cheked && (!this.formularioJuridica.valid )) {
     if ( cheked && (!this.formularioJuridica.valid || !this.formularioRepresentante.valid)) {
       return true;
     } else if ( !this.formularioJuridica.valid ) {
