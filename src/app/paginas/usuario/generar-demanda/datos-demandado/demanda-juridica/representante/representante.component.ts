@@ -14,7 +14,7 @@ export class RepresentanteComponent implements OnInit {
   @Output() representanteFormulario = new EventEmitter();
 
 
-  constructor(private formBuilder: FormBuilder ){
+  constructor(private formBuilder: FormBuilder ) {
 
     this.formularioRepresentante = formBuilder.group({
       'nombre':    [null, Validators.required],
@@ -30,11 +30,11 @@ export class RepresentanteComponent implements OnInit {
 
   ngOnInit(){
 
-    this.representanteFormulario.emit(this.formularioRepresentante);
+    //this.representanteFormulario.emit(this.formularioRepresentante);
 
   }
 
-  ngAfterContentChecked(){
+  ngAfterContentChecked () {
 
     this.representanteFormulario.emit(this.formularioRepresentante);
 

@@ -36,6 +36,23 @@ export class DemandaNaturalComponent implements OnInit {
 
 
   log(){
+
+    /*
+  dataDemandaPersonaNatural = {
+      fechaDemandaPersonaNatural: this.formularioNatural.,
+      codigoCiudad: this.formularioNatural.,
+      tipoDocumentoPersona: this.formularioNatural.,
+      numeroDocumentoPersona: this.formularioNatural.,
+      IdPersonaNatural: this.formularioNatural.,
+      idContrato: this.formularioNatural.,
+      fechaPropuestaRadicacionDemandaPersonaN: this.formularioNatural.,
+      fecharRealRadicacionDemandaPersonaN: this.formularioNatural.,
+      fechaPropuestaRadicacionDerechoPetiPersonaN: this.formularioNatural.,
+      fecharRealRadicacionDerechoPetiPersonaN: this.formularioNatural.,
+      informeDesicionFinalDemandaPersonaN: this.formularioNatural.,
+      respuestaFinalDemandaersonaN: this.formularioNatural.;
+}
+*/
     console.log(this.formularioNatural.value);
   }
 
@@ -45,3 +62,15 @@ export class DemandaNaturalComponent implements OnInit {
           this.formularioNatural.get('email').hasError('email') ? 'Email no vaildo' : '';
  }
 }
+
+/*
+
+var today = new Date();
+ var dd = String(today.getDate()).padStart(2, '0');
+ var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+ var yyyy = today.getFullYear();
+
+today = mm + '/' + dd + '/' + yyyy;
+document.write(today);
+  document.getElementById("demo").innerHTML = today;
+*/

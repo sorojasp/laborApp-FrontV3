@@ -1,5 +1,5 @@
-<form [formGroup]="formularioJuridica" class="full-width" (ngSubmit)="correrPrueba(representante.checked)">
-
+<!-- <form [formGroup]="formularioJuridica" class="full-width" (ngSubmit)="correrPrueba()">this.formularioJuridica.value.checkedDatosRepresentante -->
+ <form [formGroup]="formularioJuridica" class="full-width" (ngSubmit)="correrPrueba(representante._checked)"> 
     <div class="full-width nombre-inputs">
       <mat-form-field class="half-width">
         <input matInput
@@ -83,26 +83,29 @@
     <div class="full-width mb-1">
 
       <mat-checkbox #representante  
-      formControlName="checkedDatosRepresentante">
+      formControlName="checkedDatosRepresentante"
+      (click)="invertir()"
+      >
         Sabe usted los datos del representante legal
       </mat-checkbox>
 
     </div>
 
 
-    <!-- Representante legal -->
+    <!-- Representante legal formControlName="checkedDatosRepresentante" -->
  <!-- Aquí marca error  -->
     <app-representante
-      *ngIf="this.formularioJuridica.value.checkedDatosRepresentante"
+    [hidden]="chequeado"
+    
       (representanteFormulario)="eventoHijoFormulario($event)"
       class="full-width">
     </app-representante>
 
 
-<!-- Aquí marca error  -->
+<!-- Aquí marca error  this.formularioJuridica.value.checkedDatosRepresentante-->
   <button mat-flat-button class="btn"
     type="submit" 
-    [disabled]="verificar(this.formularioJuridica.value.checkedDatosRepresentante)" >
+    [disabled]="verificar(representante._checked)" >
     Continuar
   </button>
  
