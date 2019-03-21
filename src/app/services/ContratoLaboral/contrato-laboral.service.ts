@@ -7,7 +7,7 @@ import { ContratoLaboral } from '../../models/ContratoLaboral';
 })
 export class ContratoLaboralService {
   // private UrlGuardaDatosContatoLaboral = 'https://laborappi.herokuapp.com/api/laborapp/demandado/empresa';
-  private UrlPruebaContratoLaboral =  'http://localhost:3000/LaborApp/PruebaGuardarContratoLaboral';
+  private UrlPruebaContratoLaboral =  'https://back-laborapp.herokuapp.com/api/laborapp/contrato';
   constructor(private http: HttpClient) {}
   guardarContratoLaboral(contratoLaboral: ContratoLaboral) {
 

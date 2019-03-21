@@ -4,6 +4,7 @@ import { DemandadoService, DemandaPdfService } from '../../../../../services/ser
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { saveAs } from 'file-saver';
+import {LocalStorageService} from '../../../../../services/localStorage/local-storage.service'
 
 
 
@@ -30,7 +31,9 @@ export class DemandaJuridicaComponent implements OnInit, AfterContentChecked  {
     private demandaPdfService: DemandaPdfService,
     private router: Router,
     public snackBar: MatSnackBar,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private localStorageService: LocalStorageService
+    ) {
 
     this.formularioJuridica = this.formBuilder.group({
       'razonSocial':  [null, Validators.required],
@@ -48,8 +51,8 @@ export class DemandaJuridicaComponent implements OnInit, AfterContentChecked  {
 
   }
 
-  invertir(){
-    this.chequeado ? this.chequeado= false : this.chequeado = true;
+  invertir() {
+    this.chequeado ? this.chequeado = false : this.chequeado = true;
   }
 
 
@@ -59,7 +62,7 @@ export class DemandaJuridicaComponent implements OnInit, AfterContentChecked  {
 
   eventoHijoFormulario(e) {
     this.formularioRepresentante = e;
-    console.log(e.controls);
+    // console.log(e.controls);
 
 
   }
@@ -116,8 +119,10 @@ console.log('CHECKEADO');
         this.snackBar.open('guardado exitosamente', '', {
           duration: 1000,
         });
-         this.router.navigate(['../datos-contrato'], {relativeTo: this.activatedRoute});
-         localStorage.setItem('demandadoJuridico', JSON.stringify(objetoDemandadoJuridico));
+        localStorage.setItem('demandadoJuridico', JSON.stringify(objetoDemandadoJuridico));
+        this.localStorageService.setDataInLocalStorage('seleccionDemandado', 'juridico');
+        this.router.navigate(['../datos-contrato'], {relativeTo: this.activatedRoute});
+
         }, err => {
         console.log(err);
 
