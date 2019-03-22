@@ -54,8 +54,13 @@ getDataDemandadoNatural (datoSolicitado) {
     break;
 
     case 'idPersona':
-    let numero = this.getDataDemandadoNatural('numeroDocumentoPersona');
-    numero = numero * 1000;
+    const numeroString: string = this.getDataDemandadoNatural('numeroDocumentoPersona');
+    console.log(`id antes de multiplicación: ${typeof (numeroString)}`);
+    let numero: number = parseInt(numeroString, 10);
+    console.log(`id después de convertir a int: ${numero}`);
+    numero = numero * 100;
+    numero = numero + 10;
+    console.log(`id de persona Natural: ${numero}`);
     return numero;
     break;
 

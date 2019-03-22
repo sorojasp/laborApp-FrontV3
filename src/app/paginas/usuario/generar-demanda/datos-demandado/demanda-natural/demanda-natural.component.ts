@@ -29,7 +29,7 @@ export class DemandaNaturalComponent implements OnInit {
       'apellido':       [null, Validators.required],
       'telefono':       [null, Validators.compose([Validators.required, Validators.pattern(/^[0-9]+$/)])],
       'email':          [null, Validators.compose([Validators.required, Validators.email])],
-      'tipoDeDocumento':   ['CC'],
+      'tipoDeDocumento':   ['cedulaCiudadania'],
       'numeroDeDocumento': [null, Validators.compose([Validators.required, Validators.pattern(/^[0-9]+$/)])],
       'direccion':      [null, Validators.required],
       'departamento':   [null, Validators.required],
@@ -44,6 +44,8 @@ export class DemandaNaturalComponent implements OnInit {
 
   log(){
 
+    const idPersonaNatural = this.formularioNatural.value.numeroDeDocumento * 110;
+
       this.dataDemandaPersonaNatural = {
         tipoDocumentoPersona: this.formularioNatural.value.tipoDeDocumento,
         numeroDocumentoPersona:  this.formularioNatural.value.numeroDeDocumento,
@@ -55,9 +57,7 @@ export class DemandaNaturalComponent implements OnInit {
         generoPersona: null,
         lugarExpedicionCedulaPersona: null,
         contrasenaPersona: null,
-        IdPersonaNatural: this.localStorageService.getDataDemandadoNatural('idPersona')
-
-
+        IdPersonaNatural: idPersonaNatural
 };
 this.personaNaturalService.guardarPersonaNatural(this.dataDemandaPersonaNatural)
 .subscribe(result => {
@@ -65,8 +65,9 @@ this.personaNaturalService.guardarPersonaNatural(this.dataDemandaPersonaNatural)
   this.snackBar.open('guardado exitosamente', '', {
     duration: 1000,
   });
-// localStorage.setItem('DemandadoNatural', JSON.stringify(this.dataDemandaPersonaNatural));
- // this.router.navigate(['../datos-contrato'], { relativeTo: this.activatedRoute });
+  localStorage.setItem('DemandadoNatural', JSON.stringify(this.dataDemandaPersonaNatural));
+  this.localStorageService.setDataInLocalStorage('seleccionDemandado', 'natural');
+  this.router.navigate(['../datos-contrato'], { relativeTo: this.activatedRoute });
 
 }, err => {
 
@@ -74,10 +75,6 @@ this.personaNaturalService.guardarPersonaNatural(this.dataDemandaPersonaNatural)
   this.snackBar.open('problemas al guardar', '', {
     duration: 1000,
   });
-  localStorage.setItem('DemandadoNatural', JSON.stringify(this.dataDemandaPersonaNatural));
-  this.localStorageService.setDataInLocalStorage('seleccionDemandado', 'natural');
-  this.router.navigate(['../datos-contrato'], { relativeTo: this.activatedRoute });
-
 });
 
     console.log(this.dataDemandaPersonaNatural);
