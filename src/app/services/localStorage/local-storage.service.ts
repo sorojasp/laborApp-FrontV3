@@ -22,6 +22,9 @@ switch (datoSolicitado) {
   case 'numeroDocumento':
   return DataUsuario.numeroDocumentoPersona;
   break;
+  case 'codigoCiudad':
+  return DataUsuario.codigoCiudad;
+  break;
   default:
   return 'dato no existente o mal consultado';
 
@@ -76,9 +79,20 @@ setDataInLocalStorage(nombreCampo: string, data: any ) {
 
 }
 
-getSeleccionConflicto (): string {
-const seleccionDemandado = localStorage.getItem('seleccionDemandado');
-return seleccionDemandado;
+getSeleccionConflicto (): any {
+const seleccionDemandado_ = localStorage.getItem('seleccionDemandado');
+return seleccionDemandado_;
+}
+
+
+getDataContrato (datoSolicitado): any {
+  const dataContrato = JSON.parse(localStorage.getItem('contratoData'));
+  switch (datoSolicitado) {
+    case 'id':
+    return dataContrato.id;
+    break;
+  }
+
 }
 
 
