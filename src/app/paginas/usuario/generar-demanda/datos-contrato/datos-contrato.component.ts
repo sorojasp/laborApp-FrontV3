@@ -132,7 +132,7 @@ export class DatosContratoComponent implements OnInit, AfterContentChecked {
     IdPersonaNatural: this.localStorageService.getDataDemandadoNatural('idPersona') ,
     idContrato: this.localStorageService.getDataContrato('id'),
   };
-  
+
   return demandaNatural;
   }
 
