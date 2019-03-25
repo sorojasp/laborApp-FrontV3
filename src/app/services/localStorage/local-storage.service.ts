@@ -91,9 +91,53 @@ getDataContrato (datoSolicitado): any {
     case 'id':
     return dataContrato.id;
     break;
+
+    case 'inicio':
+    return dataContrato.general.fechaInicioContrato;
+    break;
+
+    case 'final':
+    return dataContrato.general.fechaFinalContrato;
+    break;
+
+    case 'tipo':
+    return dataContrato.general.tipoContrato;
+    break;
   }
+}
+
+getConflictoDSJC () {
+  const conflictoDSJC = JSON.parse(localStorage.getItem('detalleDespidoSJC'));
+  return conflictoDSJC.fechaDespidoSJC;
 
 }
+
+getConflictoPagoSalario () {
+  const conflictoSalarios  = JSON.parse(localStorage.getItem('detalleNoPagoSalario'));
+  return conflictoSalarios  ;
+}
+
+getConflictoVacaciones () {
+  const conflictoVacas  = JSON.parse(localStorage.getItem('detalleNoPagoVacas'));
+  return conflictoVacas ;
+
+}
+
+getConflictoCesantias () {
+  const conflictoCesantias = JSON.parse(localStorage.getItem('detalleNoPagoCesantias'));
+  return conflictoCesantias;
+}
+
+getConflictoPrimas () {
+  const conflictoPrimas = JSON.parse(localStorage.getItem('detalleNoPagoPrima'));
+  return conflictoPrimas;
+}
+
+getConflictosSeleccionados () {
+  const seleccionConflictos = JSON.parse(localStorage.getItem('dataConflictos'));
+  return seleccionConflictos;
+}
+
 
 
 

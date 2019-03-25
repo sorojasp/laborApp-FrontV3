@@ -23,6 +23,7 @@ import { NPsalarioComponent } from './generar-demanda/detalleConflictos/n-psalar
 import { NPvacasComponent } from './generar-demanda/detalleConflictos/n-pvacas/n-pvacas.component';
 import { NPcesantiasComponent } from './generar-demanda/detalleConflictos/n-pcesantias/n-pcesantias.component';
 import { NPprimaComponent } from './generar-demanda/detalleConflictos/n-pprima/n-pprima.component';
+import {FinalDemandaComponent } from './generar-demanda/final-demanda/final-demanda.component';
 
 
 
@@ -41,7 +42,8 @@ import { NPprimaComponent } from './generar-demanda/detalleConflictos/n-pprima/n
     NPsalarioComponent,
     NPvacasComponent,
     NPcesantiasComponent,
-    NPprimaComponent
+    NPprimaComponent,
+    FinalDemandaComponent
     /* En estos componenentes se pueden usar los módulos que se
     importan desde imports
 

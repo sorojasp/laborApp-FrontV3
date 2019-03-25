@@ -45,22 +45,16 @@ export class NPsalarioComponent implements OnInit {
       this.router_.navigate(['../detalle-NoPagoCesantias'], { relativeTo: this.activatedRoute });
     } else if ( this.dataOfConflict.noPagoPrimas  === true) {
       this.router_.navigate(['../detalle-NoPagoPrima'], { relativeTo: this.activatedRoute });
-    } else if ( this.dataOfConflict.noPagoARL === true ||
-                this.dataOfConflict.noPagoPensiones === true ||
-                this.dataOfConflict.noPagoHorasExtras === true ||
-                this.dataOfConflict.noPagoFestiDomini === true
-        ) {
-          alert('debe contactar un abogado');
-        } else {
-          alert ('en breve se generará su demanda');
-        }
-
+    } else {
+        this.router_.navigate(['../final-demanda'], { relativeTo: this.activatedRoute });
+      }
 
   }
 
 
   subirNoPagoSalario(): void {
     localStorage.setItem('detalleNoPagoSalario', JSON.stringify(this.formularioNoPagoSalario.value));
+    /*
     this.noPagoSalarioService.guardarNoPagoSalario(this.DatosParaEnviar())
     .subscribe( result => {
       console.log(result);
@@ -68,6 +62,8 @@ export class NPsalarioComponent implements OnInit {
     }, err => {
       console.log(err);
     });
+
+    */
 
     this.irSiguienteVista();
 

@@ -34,6 +34,8 @@ export class DespidoComponent implements OnInit, AfterContentChecked {
   ngAfterContentChecked() { }
 
   irNuevaRuta() {
+
+    /*
     this.despidoSJCService.guardarConflictoDSJC(this.DatosParaenviar())
     .subscribe( result => {
       console.log(result);
@@ -41,6 +43,8 @@ export class DespidoComponent implements OnInit, AfterContentChecked {
     }, err => {
       console.log(err);
     });
+
+    */
 
 
 
@@ -53,17 +57,9 @@ export class DespidoComponent implements OnInit, AfterContentChecked {
       this.router_.navigate(['../detalle-NoPagoCesantias'], { relativeTo: this.activatedRoute });
     } else if ( this.dataOfConflict.noPagoPrimas  === true) {
       this.router_.navigate(['../detalle-NoPagoPrima'], { relativeTo: this.activatedRoute });
-    } else if ( this.dataOfConflict.noPagoARL === true ||
-                this.dataOfConflict.noPagoPensiones === true ||
-                this.dataOfConflict.noPagoHorasExtras === true ||
-                this.dataOfConflict.noPagoFestiDomini === true
-        ) {
-          alert('debe contactar un abogado');
-        } else {
-          alert ('en breve se generará su demanda');
-        }
-
-
+    } else  {
+      this.router_.navigate(['../final-demanda'], { relativeTo: this.activatedRoute });
+    }
   }
 
   DatosParaenviar(): any {

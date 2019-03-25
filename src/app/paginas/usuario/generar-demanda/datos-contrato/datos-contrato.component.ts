@@ -75,9 +75,12 @@ export class DatosContratoComponent implements OnInit, AfterContentChecked {
          this.demandaNaturalService.guardarDemandaNatural(this.obtenerDataDemandaNatural()).
         subscribe(( res_: any) => {
           console.log(res_);
-
+          console.log(`idDemandaNatural:${res_.demandaPersonaNatural.idDemandaPersonaNatural}`);
+        this.localStorageService.setDataInLocalStorage('idDemandaNatural', res_.demandaPersonaNatural.idDemandaPersonaNatural);
         }, error_ => {
-          console.log(error_);
+          this.snackBar.open('Problemas al generar contrato con persona natural', '', {
+            duration: 1000,
+          });
         });
 
       } else if (this.localStorageService.getSeleccionConflicto() === 'juridico') {
@@ -85,10 +88,12 @@ export class DatosContratoComponent implements OnInit, AfterContentChecked {
         this.demandaJuridicaService.guardarDemandaNatural(this.obtenerDataDemandaJuridica()).
         subscribe(( res: any) => {
           console.log(res);
-
+          console.log(`idEmpresa:${res.demandaEmpresa.idDemandaEmpresa}`);
+          this.localStorageService.setDataInLocalStorage('idDemandaEmpresa', res.demandaEmpresa.idDemandaEmpresa);
         }, error => {
-          console.log(error);
-          console.log(`información del contrato*: ${this.localStorageService.getDataContrato('id')}`);
+          this.snackBar.open('Problemas al generar contrato con empresa', '', {
+            duration: 1000,
+          });
         });
 
       }
@@ -119,6 +124,7 @@ export class DatosContratoComponent implements OnInit, AfterContentChecked {
     const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     today = new Date(date);
     return today;
+    
   }
 
   obtenerDataDemandaNatural(): any {

@@ -13,6 +13,7 @@ import { NPsalarioComponent } from './generar-demanda/detalleConflictos/n-psalar
 import {NPvacasComponent} from './generar-demanda/detalleConflictos/n-pvacas/n-pvacas.component';
 import {NPcesantiasComponent} from './generar-demanda/detalleConflictos/n-pcesantias/n-pcesantias.component';
 import {NPprimaComponent} from './generar-demanda/detalleConflictos/n-pprima/n-pprima.component';
+import {FinalDemandaComponent} from './generar-demanda/final-demanda/final-demanda.component';
 
 const routes: Routes = [
 
@@ -31,7 +32,7 @@ const routes: Routes = [
       { path:  'detalle-NoPagoVacas', component: NPvacasComponent},
       { path:  'detalle-NoPagoCesantias', component: NPcesantiasComponent},
       { path:  'detalle-NoPagoPrima', component: NPprimaComponent},
-
+      { path:  'final-demanda', component: FinalDemandaComponent},
       { path: '', redirectTo: 'datos-demandado', pathMatch: 'full' },
 
     ]

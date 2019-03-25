@@ -34,6 +34,7 @@ export class NPprimaComponent implements OnInit {
 
   uploadPrimaData () {
     localStorage.setItem('detalleNoPagoPrima', JSON.stringify(this.detailFormPrimaPay.value));
+    /*
     this.noPagoPrimaService.guardarPrimaData(this.buildDataToSend())
     .subscribe( result => {
       console.log(result);
@@ -41,19 +42,12 @@ export class NPprimaComponent implements OnInit {
     }, err => {
       console.log(err);
     });
+    */
     this.siguienteVista();
   }
 
   siguienteVista () {
-    if ( this.dataOfConflict.noPagoARL === true ||
-      this.dataOfConflict.noPagoPensiones === true ||
-      this.dataOfConflict.noPagoHorasExtras === true ||
-      this.dataOfConflict.noPagoFestiDomini === true
-      ) {
-        alert('debe contactar un abogado');
-      } else {
-        alert ('en breve se generará su demanda');
-      }
+    this.router_.navigate(['../final-demanda'], { relativeTo: this.activatedRoute });
 
   }
 

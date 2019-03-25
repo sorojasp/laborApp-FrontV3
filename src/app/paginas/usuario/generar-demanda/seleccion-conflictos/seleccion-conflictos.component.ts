@@ -7,6 +7,7 @@ import {
   Validators
   } from '@angular/forms';
 
+  import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-seleccion-conflictos',
@@ -30,6 +31,7 @@ constructor(
   private formBuilder: FormBuilder,
   private router_: Router,
   private activatedRoute: ActivatedRoute,
+  public snackBar: MatSnackBar
 
 ) {
   this.formularioSeleccionConflictos = this.formBuilder.group({
@@ -73,17 +75,14 @@ if (this.formularioSeleccionConflictos.value.despidoInjustificado === true) {
            this.formularioSeleccionConflictos.value.noPagoPensiones === true ||
            this.formularioSeleccionConflictos.value.noPagoHorasExtras === true ||
            this.formularioSeleccionConflictos.value.noPagoFestiDomini === true) {
-
-            alert('la inteligencia artificial de LaborApp inidca que para este caso un abogado se comunicará contigo');
+            this.router_.navigate(['../final-demanda'], { relativeTo: this.activatedRoute });
 } else {
 
-  alert('Debes seleccionar al menos un conflicto');
+this.snackBar.open('Debes seleccionar al menos un conflicto', '', {
+  duration: 2500,
+});
 
 }
-
-
-
-
 }
 
 }

@@ -34,6 +34,7 @@ export class NPcesantiasComponent implements OnInit, AfterContentChecked {
 
   subirDatosNoPagoCesantias() {
     localStorage.setItem('detalleNoPagoCesantias', JSON.stringify(this.formDetailNoPagoCesantias.value));
+    /*
     this.noPagoCesantiasService.guardarDataConfCesantias(this.buildDataToSend())
     .subscribe( result => {
       console.log(result);
@@ -41,6 +42,7 @@ export class NPcesantiasComponent implements OnInit, AfterContentChecked {
     }, err => {
       console.log(err);
     });
+    */
 
 
     this.irSiguienteVista();
@@ -49,16 +51,9 @@ export class NPcesantiasComponent implements OnInit, AfterContentChecked {
   irSiguienteVista(): void {
      if ( this.dataOfConflict.noPagoPrimas  === true) {
       this.router_.navigate(['../detalle-NoPagoPrima'], { relativeTo: this.activatedRoute });
-    } else if ( this.dataOfConflict.noPagoARL === true ||
-                this.dataOfConflict.noPagoPensiones === true ||
-                this.dataOfConflict.noPagoHorasExtras === true ||
-                this.dataOfConflict.noPagoFestiDomini === true
-        ) {
-          alert('debe contactar un abogado');
-        } else {
-          alert ('en breve se generará su demanda');
-        }
-
+    } else  {
+      this.router_.navigate(['../final-demanda'], { relativeTo: this.activatedRoute });
+    }
   }
 
   buildDataToSend (): any {
